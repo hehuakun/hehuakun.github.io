@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+.NET应该怎么学？
+ ![](http://hehuakun.github.io/img/Net应该学什么怎么学.jpg) ![](http://hehuakun.github.io/img/QQ截图未命名.jpg)
+基本概念
+1 装箱和拆箱
+ （1）.NET中，基本数据类型：值类型和引用类型
+ （2）对应的存储结构（在内存上的表现）为：栈和堆（托管堆）
+ （3）装箱就是将值类型转换为引用类型，在语法层面如下：
+int I=10;   object obj=I;
+在内部操作为：对值类型在堆中分配一个对象实例，并将该值复制到新的对象中。按三步进行。 
+第一步：新分配托管堆内存(大小为值类型实例大小加上一个方法表指针和一个SyncBlockIndex)。 
+第二步：将值类型的实例字段拷贝到新分配的内存中。 
+第三步：返回托管堆中新分配对象的地址。这个地址就是一个指向对象的引用了。 
+ （4）拆箱过程为：
+int j=(int)obj;
+检查对象实例，确保它是给定值类型的一个装箱值。将该值从实例复制到值类型变量中。拆箱只能拆装箱后的引用类型。
+ （5）装箱会有效率损耗，应尽量避免。主要在调用带引用类型的第三方（不能修改）函数时不可避免需要装箱。其余带引用类型函数调用可用*重载*避免装箱。
+2 重载（overload）与覆写（override）
+重载（overload）就是在一个类中，拥有相同方法名，但参数不同的方法的标记，且第一个方法不需要标记；覆写（override）表示子类在继承父类的方法后，需要重新实现方法，在覆写（overirde）后，在使用子类该方法时，就看不到父类的该方法了（被覆盖掉了）。
+3 委托和事件？？
+    委托就是方法的类型；委托定义了方法的签名（返回值，参数个数，参数类型），委托是一个类，它定义了方法的类型，使得可以将方法当作另一个方法的参数来进行传递，这种将方法动态地赋给参数的做法，可以避免在程序中大量使用If-Else(Switch)语句，同时使得程序具有更好的可扩展性。
+public delegate void GreetingDelegate(string name);
+    委托可以绑定多个其定义的方法，也可解绑已绑定方法。在实际调用时，会按照绑定顺序依次调用这些方法。
+    事件就是封装了的委托类型的变量
+4 接口和抽象类
+    接口是功能的定义，比如A类需要B类提供什么功能，B类就必须实现某些函数（函数签名由A类确定），这个时候就把B类实现的这些函数叫做接口。
+    接口是包含一组虚方法的抽象类型，其中每一种方法都有其名称、参数和返回值。接口方法不能包含任何实现，CLR允许接口可以包含事件、属性、索引器、静态方法、静态字段、静态构造函数以及常数。
+    一个类可以实现多个接口，当一个类继承某个接口时，它不仅要实现该接口定义的所有方法，还要实现该接口从其他接口中继承的所有方法。
+    抽象类提供多个派生类共享基类的公共定义，它既可以提供抽象方法，也可以提供非抽象方法。抽象类不能实例化，必须通过继承由派生类实现其抽象方法，因此对抽象类不能使用new关键字，也不能被密封。如果派生类没有实现所有的抽象方法，则该派生类也必须声明为抽象类。另外，实现抽象方法由override方法来实现。
+5 虚方法与抽象方法
+    虚方法：virtual表明该方法可以被重写，但不是必须被重写，可以通过Base.方法调用。
+    抽象方法：表明该方法必须被重写。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<p>.NET应该怎么学？
+ <img src="http://hehuakun.github.io/img/Net应该学什么怎么学.jpg" alt="" title=""> <img src="http://hehuakun.github.io/img/QQ截图未命名.jpg" alt="" title="">
+基本概念
+1 装箱和拆箱
+ （1）.NET中，基本数据类型：值类型和引用类型
+ （2）对应的存储结构（在内存上的表现）为：栈和堆（托管堆）
+ （3）装箱就是将值类型转换为引用类型，在语法层面如下：
+int I=10;   object obj=I;
+在内部操作为：对值类型在堆中分配一个对象实例，并将该值复制到新的对象中。按三步进行。 
+第一步：新分配托管堆内存(大小为值类型实例大小加上一个方法表指针和一个SyncBlockIndex)。 
+第二步：将值类型的实例字段拷贝到新分配的内存中。 
+第三步：返回托管堆中新分配对象的地址。这个地址就是一个指向对象的引用了。 
+ （4）拆箱过程为：
+int j=(int)obj;
+检查对象实例，确保它是给定值类型的一个装箱值。将该值从实例复制到值类型变量中。拆箱只能拆装箱后的引用类型。
+ （5）装箱会有效率损耗，应尽量避免。主要在调用带引用类型的第三方（不能修改）函数时不可避免需要装箱。其余带引用类型函数调用可用<em>重载</em>避免装箱。
+2 重载（overload）与覆写（override）
+重载（overload）就是在一个类中，拥有相同方法名，但参数不同的方法的标记，且第一个方法不需要标记；覆写（override）表示子类在继承父类的方法后，需要重新实现方法，在覆写（overirde）后，在使用子类该方法时，就看不到父类的该方法了（被覆盖掉了）。
+3 委托和事件？？
+    委托就是方法的类型；委托定义了方法的签名（返回值，参数个数，参数类型），委托是一个类，它定义了方法的类型，使得可以将方法当作另一个方法的参数来进行传递，这种将方法动态地赋给参数的做法，可以避免在程序中大量使用If-Else(Switch)语句，同时使得程序具有更好的可扩展性。
+public delegate void GreetingDelegate(string name);
+    委托可以绑定多个其定义的方法，也可解绑已绑定方法。在实际调用时，会按照绑定顺序依次调用这些方法。
+    事件就是封装了的委托类型的变量
+4 接口和抽象类
+    接口是功能的定义，比如A类需要B类提供什么功能，B类就必须实现某些函数（函数签名由A类确定），这个时候就把B类实现的这些函数叫做接口。
+    接口是包含一组虚方法的抽象类型，其中每一种方法都有其名称、参数和返回值。接口方法不能包含任何实现，CLR允许接口可以包含事件、属性、索引器、静态方法、静态字段、静态构造函数以及常数。
+    一个类可以实现多个接口，当一个类继承某个接口时，它不仅要实现该接口定义的所有方法，还要实现该接口从其他接口中继承的所有方法。
+    抽象类提供多个派生类共享基类的公共定义，它既可以提供抽象方法，也可以提供非抽象方法。抽象类不能实例化，必须通过继承由派生类实现其抽象方法，因此对抽象类不能使用new关键字，也不能被密封。如果派生类没有实现所有的抽象方法，则该派生类也必须声明为抽象类。另外，实现抽象方法由override方法来实现。
+5 虚方法与抽象方法
+    虚方法：virtual表明该方法可以被重写，但不是必须被重写，可以通过Base.方法调用。
+    抽象方法：表明该方法必须被重写。</p>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "c#.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
