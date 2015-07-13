@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+1 变量的作用域是包含它声明的最小语句块（最内层大括弧，一句语句也可用一对大括弧括住）
+
+2
+~~~~{c}
+x&(x-1);
+~~~~
+该运算的结果是x的二进制表示的最低位的“1”变为“0”，在一些底层算法中经常用到此性质。
+
+3
+~~~~{c}
+a=i++;//a=i,i=i+1
+a=++i;//i=i+1,a=i
+~~~~
+
+4
+printf计算参数时时从有往左压栈的
+
+5 
+~~~~
+*(ptr++)+=123;//ptr是一个指针
+~~~~
+
+此时，先算括弧里面就上当了！！！
+实际等价于
+~~~~
+*ptr=*ptr+123;
+ptr++;
+~~~~
+切记切记！！！
+
+6
+是if(“A”==a);好还是if(a=="A");好？
+第一种好，为什么呢？如果你将“==”写成“=”，由于编译器不允许对常量赋值，可以帮助检查语法错误。
+
+7
+
+这个理解有点绕脑子，先记住，慢慢理解。
+~~~~
+（int &）a=*(int*)(&a)
+~~~~
+
+实际上就是把a的指针变为int型指针，a的值并未变化。
+
+8
+
+~~~~
+unsigned int a=0xfffffff7;
+char*b=(char*)&a;
+~~~~
+此时a是一个变量，b位指针，&a+1和b+1寻址方式不一样，char是加一个字节，int是加4个字节。
+~~~~
+~~~~
+
+9
+
+
+函数调用时实参和形参类型不一致时，目标转换类型为形参类型。
+
+函数类型与return类型不一致时，以函数类型为准。
+
+以上规则总结就是以不影响函数调用为准。
+
+10
+
+特殊的性质
+2的n次方的二进制表示为：
+~~~~
+10  100  1000  10000等
+~~~~
+
+减去“1”
+~~~~
+01 011  0111  01111等
+~~~~
+
+设2的n次方为x,则
+$
+!x(x-1
+)$
+的值为
+~~~~
+11 111 1111 11111等
+~~~~
+
+11
+
+利用逻辑位运算实现加法运算
+
+~~~~
+（x&y）+((x^y)>>1)=(x+y)/2;
+~~~~
+
+12
+
+原码：整数绝对值的二进制表示；
+
+反码：~原码
+
+补码：反码+1
+
+负数右移  在左边补“1”
+
+负数左移 在右边补“0”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<p>1 变量的作用域是包含它声明的最小语句块（最内层大括弧，一句语句也可用一对大括弧括住）</p>
+
+<p>2</p>
+
+<pre class=" language-c"><code class=" language-c">x<span class="token operator">&amp;</span><span class="token punctuation">(</span>x<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>该运算的结果是x的二进制表示的最低位的“1”变为“0”，在一些底层算法中经常用到此性质。
+
+3
+<pre class=" language-c"><code class=" language-c">a<span class="token operator">=</span>i<span class="token operator">++</span><span class="token comment" spellcheck="true">;//a=i,i=i+1
+</span>a<span class="token operator">=</span><span class="token operator">++</span>i<span class="token comment" spellcheck="true">;//i=i+1,a=i
+</span></code></pre>
+
+<p>4
+printf计算参数时时从有往左压栈的</p>
+
+<p>5 </p>
+
+<pre><code>*(ptr++)+=123;//ptr是一个指针
+</code></pre>
+
+<p>此时，先算括弧里面就上当了！！！
+实际等价于</p>
+
+<pre><code>*ptr=*ptr+123;
+ptr++;
+</code></pre>切记切记！！！
+
+6
+是if(“A”==a);好还是if(a=="A");好？
+第一种好，为什么呢？如果你将“==”写成“=”，由于编译器不允许对常量赋值，可以帮助检查语法错误。
+
+7
+
+这个理解有点绕脑子，先记住，慢慢理解。
+<pre><code>（int &amp;）a=*(int*)(&amp;a)
+</code></pre>
+
+<p>实际上就是把a的指针变为int型指针，a的值并未变化。</p>
+
+<p>8</p>
+
+<pre><code>unsigned int a=0xfffffff7;
+char*b=(char*)&amp;a;
+</code></pre>此时a是一个变量，b位指针，&amp;a+1和b+1寻址方式不一样，char是加一个字节，int是加4个字节。
+<pre><code></code></pre>
+
+<p>9</p>
+
+<p>函数调用时实参和形参类型不一致时，目标转换类型为形参类型。</p>
+
+<p>函数类型与return类型不一致时，以函数类型为准。</p>
+
+<p>以上规则总结就是以不影响函数调用为准。</p>
+
+<p>10</p>
+
+<p>特殊的性质
+2的n次方的二进制表示为：</p>
+
+<pre><code>10  100  1000  10000等
+</code></pre>
+
+<p>减去“1”</p>
+
+<pre><code>01 011  0111  01111等
+</code></pre>
+
+<p>设2的n次方为x,则
+$
+!x(x-1
+)$
+的值为</p>
+
+<pre><code>11 111 1111 11111等
+</code></pre>
+
+<p>11</p>
+
+<p>利用逻辑位运算实现加法运算</p>
+
+<pre><code>（x&amp;y）+((x^y)&gt;&gt;1)=(x+y)/2;
+</code></pre>
+
+<p>12</p>
+
+<p>原码：整数绝对值的二进制表示；</p>
+
+<p>反码：~原码</p>
+
+<p>补码：反码+1</p>
+
+<p>负数右移  在左边补“1”</p>
+
+<p>负数左移 在右边补“0”</p>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "c++.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
