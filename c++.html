@@ -32,6 +32,8 @@
 x&(x-1);
 ~~~~
 该运算的结果是x的二进制表示的最低位的“1”变为“0”，在一些底层算法中经常用到此性质。
+~~~~
+~~~~
 
 3
 ~~~~{c}
@@ -40,6 +42,7 @@ a=++i;//i=i+1,a=i
 ~~~~
 
 4
+
 printf计算参数时时从有往左压栈的
 
 5 
@@ -54,8 +57,11 @@ printf计算参数时时从有往左压栈的
 ptr++;
 ~~~~
 切记切记！！！
+~~~~
+~~~~
 
 6
+
 是if(“A”==a);好还是if(a=="A");好？
 第一种好，为什么呢？如果你将“==”写成“=”，由于编译器不允许对常量赋值，可以帮助检查语法错误。
 
@@ -154,14 +160,17 @@ $
 
 <pre class=" language-c"><code class=" language-c">x<span class="token operator">&amp;</span><span class="token punctuation">(</span>x<span class="token number">-1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 </code></pre>该运算的结果是x的二进制表示的最低位的“1”变为“0”，在一些底层算法中经常用到此性质。
+<pre><code></code></pre>
 
-3
+<p>3</p>
+
 <pre class=" language-c"><code class=" language-c">a<span class="token operator">=</span>i<span class="token operator">++</span><span class="token comment" spellcheck="true">;//a=i,i=i+1
 </span>a<span class="token operator">=</span><span class="token operator">++</span>i<span class="token comment" spellcheck="true">;//i=i+1,a=i
 </span></code></pre>
 
-<p>4
-printf计算参数时时从有往左压栈的</p>
+<p>4</p>
+
+<p>printf计算参数时时从有往左压栈的</p>
 
 <p>5 </p>
 
@@ -174,14 +183,17 @@ printf计算参数时时从有往左压栈的</p>
 <pre><code>*ptr=*ptr+123;
 ptr++;
 </code></pre>切记切记！！！
+<pre><code></code></pre>
 
-6
-是if(“A”==a);好还是if(a=="A");好？
-第一种好，为什么呢？如果你将“==”写成“=”，由于编译器不允许对常量赋值，可以帮助检查语法错误。
+<p>6</p>
 
-7
+<p>是if(“A”==a);好还是if(a=="A");好？
+第一种好，为什么呢？如果你将“==”写成“=”，由于编译器不允许对常量赋值，可以帮助检查语法错误。</p>
 
-这个理解有点绕脑子，先记住，慢慢理解。
+<p>7</p>
+
+<p>这个理解有点绕脑子，先记住，慢慢理解。</p>
+
 <pre><code>（int &amp;）a=*(int*)(&amp;a)
 </code></pre>
 
