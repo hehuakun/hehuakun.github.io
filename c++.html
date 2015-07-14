@@ -146,7 +146,7 @@ a+=b*(b>>sizeof(int)*8-1);
 return sum-a;
 ~~~~
 
-该性质实质就是编译器编译比较运算的方法之一
+该性质实质就是编译器编译比较运算的方法之一，返回的是较小的数
 
 14
 
@@ -234,6 +234,8 @@ strlen(ss)发生错误，因为strlen参数
 
 ~~~~
 
+注意，sizeof实质是个操作符，不是函数，不能返回动态分配的内存
+
 18  cpu优化规则
 
 在cpu读写数据时，对于n(2,4,8等)字节的数据，如果它的首地址能被n整除，读写效率最高。所以在存储数据时，尽量做到数据对齐（现在一般都由编译器完成）。pack预处理命令就是禁止编译器自动对齐数据。
@@ -246,6 +248,70 @@ strlen(ss)发生错误，因为strlen参数
 sizeof计算栈中数据分配大小
 
 21
+
+~~~~{c}
+int add(int a,int b)
+{
+if(b=0)return a;
+int sum,carry;
+sum=a^b;carry=(a&b)<<1;
+add(sum,carry);
+}
+~~~~
+
+此算法是经典的用基本逻辑运算和移位运算实现加法运算的方法，还用到了递归方法。
+
+递归在采用的是分治策略，即将问题分解为几个规模较小但类似于原问题的问题，递归的求解这些子问题，然后再合并这些子问题的解来建立原问题的解。
+分治策略的每层递归都有三个步骤：
+
+（1）分解原问题为若干子问题，这些子问题是原问题的较小实例。
+
+（2）解决这些子问题，递归地求解各子问题。然而，若子问题的规模足够小，则直接求解
+
+（3）合并这些子问题的解成原问题的解
+
+分析？？？？
+
+22
+
+int **a,首先*a表示a为一个指针，int *表明指针指向一个指针，后一个指针指向一个整型。
+
+23
+
+int &    &不是取地址符号，而是引用符号，变量的引用就是变量的别名，在声明一个引用时，必须同时对之初始化，即声明它代表哪一个变量，在声明时，只有声明没有定义，只是声明它与原来某一变量的关系
+
+~~~~{c}
+int& a=b;
+~~~~
+声明a是b的引用
+
+引用符与取地址符的区别，引用前面有数据类型
+
+
+24
+
+函数调用
+
+定义函数时，形参不占内存空间；在调用函数时，形参会被分配内存空间，结束后形参所占内存被释放。
+
+函数调用时，参数传递有两种方式，值传递和引用传递。
+
+值传递：单向（实参复制），在内存中，实参和形参为不同单元
+
+引用传递：引用作实参参数传递双向，在函数内部修改实参会在调用结束后修改实参本身
+
+25
+
+~~~~{c}
+string *p=new string[2];
+~~~~
+new 关键字的使用，在c++中会有其他用法。作用为分配内存空间，并将其指针返回给P
+
+
+26
+
+
+
 
 
 
@@ -346,7 +412,7 @@ char*b=(char*)&amp;a;
 </code></pre>
 
 <p>设2的n次方为x,则
-<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3025-Frame" style=""><nobr><span class="math" id="MathJax-Span-22063" role="math" style="width: 4.853em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.853em; height: 0px; font-size: 125%;"><span style="position: absolute; clip: rect(1.403em 1000.002em 2.702em -999.998em); top: -2.298em; left: 0.003em;"><span class="mrow" id="MathJax-Span-22064"><span class="mo" id="MathJax-Span-22065" style="font-family: MathJax_Main;">!</span><span class="mi" id="MathJax-Span-22066" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-22067" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-22068" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-22069" style="font-family: MathJax_Main; padding-left: 0.202em;">−</span><span class="mn" id="MathJax-Span-22070" style="font-family: MathJax_Main; padding-left: 0.202em;">1</span><span class="mo" id="MathJax-Span-22071" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.302em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.378em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-3025">
+<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5218-Frame" style=""><nobr><span class="math" id="MathJax-Span-38902" role="math" style="width: 4.973em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.89em; height: 0px; font-size: 127%;"><span style="position: absolute; clip: rect(1.38em 1000.002em 2.66em -999.998em); top: -2.261em; left: 0.002em;"><span class="mrow" id="MathJax-Span-38903"><span class="mo" id="MathJax-Span-38904" style="font-family: MathJax_Main;">!</span><span class="mi" id="MathJax-Span-38905" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-38906" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-38907" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-38908" style="font-family: MathJax_Main; padding-left: 0.249em;">−</span><span class="mn" id="MathJax-Span-38909" style="font-family: MathJax_Main; padding-left: 0.249em;">1</span><span class="mo" id="MathJax-Span-38910" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.266em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.378em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-5218">
 !x(x-1
 )</script>
 的值为</p>
@@ -383,7 +449,7 @@ a<span class="token operator">+</span><span class="token operator">=</span>b<spa
 <span class="token keyword">return</span> sum<span class="token operator">-</span>a<span class="token punctuation">;</span>
 </code></pre>
 
-<p>该性质实质就是编译器编译比较运算的方法之一</p>
+<p>该性质实质就是编译器编译比较运算的方法之一，返回的是较小的数</p>
 
 <p>14</p>
 
@@ -466,6 +532,8 @@ const int* const a=&amp;b
 
 </code></pre>
 
+<p>注意，sizeof实质是个操作符，不是函数，不能返回动态分配的内存</p>
+
 <p>18  cpu优化规则</p>
 
 <p>在cpu读写数据时，对于n(2,4,8等)字节的数据，如果它的首地址能被n整除，读写效率最高。所以在存储数据时，尽量做到数据对齐（现在一般都由编译器完成）。pack预处理命令就是禁止编译器自动对齐数据。</p>
@@ -478,6 +546,60 @@ const int* const a=&amp;b
 sizeof计算栈中数据分配大小</p>
 
 <p>21</p>
+
+<pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> <span class="token function">add<span class="token punctuation">(</span></span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span>b<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token keyword">int</span> sum<span class="token punctuation">,</span>carry<span class="token punctuation">;</span>
+sum<span class="token operator">=</span>a<span class="token operator">^</span>b<span class="token punctuation">;</span>carry<span class="token operator">=</span><span class="token punctuation">(</span>a<span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">&lt;</span><span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token function">add<span class="token punctuation">(</span></span>sum<span class="token punctuation">,</span>carry<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<p>此算法是经典的用基本逻辑运算和移位运算实现加法运算的方法，还用到了递归方法。</p>
+
+<p>递归在采用的是分治策略，即将问题分解为几个规模较小但类似于原问题的问题，递归的求解这些子问题，然后再合并这些子问题的解来建立原问题的解。
+分治策略的每层递归都有三个步骤：</p>
+
+<p>（1）分解原问题为若干子问题，这些子问题是原问题的较小实例。</p>
+
+<p>（2）解决这些子问题，递归地求解各子问题。然而，若子问题的规模足够小，则直接求解</p>
+
+<p>（3）合并这些子问题的解成原问题的解</p>
+
+<p>分析？？？？</p>
+
+<p>22</p>
+
+<p>int <em>*a,首先</em>a表示a为一个指针，int *表明指针指向一个指针，后一个指针指向一个整型。</p>
+
+<p>23</p>
+
+<p>int &amp;    &amp;不是取地址符号，而是引用符号，变量的引用就是变量的别名，在声明一个引用时，必须同时对之初始化，即声明它代表哪一个变量，在声明时，只有声明没有定义，只是声明它与原来某一变量的关系</p>
+
+<p></p><pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span><span class="token operator">&amp;</span> a<span class="token operator">=</span>b<span class="token punctuation">;</span>
+</code></pre>声明a是b的引用<p></p>
+
+<p>引用符与取地址符的区别，引用前面有数据类型</p>
+
+<p>24</p>
+
+<p>函数调用</p>
+
+<p>定义函数时，形参不占内存空间；在调用函数时，形参会被分配内存空间，结束后形参所占内存被释放。</p>
+
+<p>函数调用时，参数传递有两种方式，值传递和引用传递。</p>
+
+<p>值传递：单向（实参复制），在内存中，实参和形参为不同单元</p>
+
+<p>引用传递：引用作实参参数传递双向，在函数内部修改实参会在调用结束后修改实参本身</p>
+
+<p>25</p>
+
+<p></p><pre class=" language-c"><code class=" language-c">string <span class="token operator">*</span>p<span class="token operator">=</span>new <span class="token class-name">string</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre>new 关键字的使用，在c++中会有其他用法。作用为分配内存空间，并将其指针返回给P<p></p>
+
+<p>26</p>
 <!-- content end -->
 </div>
 <br>
