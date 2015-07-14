@@ -212,10 +212,27 @@ sizeof（）方法的使用
 ~~~~{c}
 char ss[]="0123456789";
 sizeof(ss)=11
+sizeof(*ss)=1
 ~~~~
 
 sizeof的参数时数组名时，计算的是整个数组所占字节，而不是数组首个元素指针所占字节数，切记切记!
 这里在数组后面会自动添加一个“\0”，占一个字节。
+
+~~~~{c}
+char ss[100]="0123456789";
+sizeof(ss)=100;
+strlen(ss)=10;
+~~~~
+
+strlen内部是用循环计算字符串长度，直到“\0"为止
+
+~~~~{c}
+int ss[100]="0123456789";
+sizeof(ss)=400//int 占四个字节
+strlen(ss)发生错误，因为strlen参数
+只能是char*，且必须以“\0”结尾
+
+~~~~
 
 18  cpu优化规则
 
@@ -329,7 +346,7 @@ char*b=(char*)&amp;a;
 </code></pre>
 
 <p>设2的n次方为x,则
-<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2609-Frame" style=""><nobr><span class="math" id="MathJax-Span-18976" role="math" style="width: 4.853em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.853em; height: 0px; font-size: 125%;"><span style="position: absolute; clip: rect(1.403em 1000.002em 2.702em -999.998em); top: -2.298em; left: 0.003em;"><span class="mrow" id="MathJax-Span-18977"><span class="mo" id="MathJax-Span-18978" style="font-family: MathJax_Main;">!</span><span class="mi" id="MathJax-Span-18979" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-18980" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-18981" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-18982" style="font-family: MathJax_Main; padding-left: 0.202em;">−</span><span class="mn" id="MathJax-Span-18983" style="font-family: MathJax_Main; padding-left: 0.202em;">1</span><span class="mo" id="MathJax-Span-18984" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.302em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.378em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-2609">
+<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3025-Frame" style=""><nobr><span class="math" id="MathJax-Span-22063" role="math" style="width: 4.853em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.853em; height: 0px; font-size: 125%;"><span style="position: absolute; clip: rect(1.403em 1000.002em 2.702em -999.998em); top: -2.298em; left: 0.003em;"><span class="mrow" id="MathJax-Span-22064"><span class="mo" id="MathJax-Span-22065" style="font-family: MathJax_Main;">!</span><span class="mi" id="MathJax-Span-22066" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-22067" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-22068" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-22069" style="font-family: MathJax_Main; padding-left: 0.202em;">−</span><span class="mn" id="MathJax-Span-22070" style="font-family: MathJax_Main; padding-left: 0.202em;">1</span><span class="mo" id="MathJax-Span-22071" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.302em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.378em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-3025">
 !x(x-1
 )</script>
 的值为</p>
@@ -429,10 +446,25 @@ const int* const a=&amp;b
 
 <pre class=" language-c"><code class=" language-c"><span class="token keyword">char</span> ss<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"0123456789"</span><span class="token punctuation">;</span>
 <span class="token keyword">sizeof</span><span class="token punctuation">(</span>ss<span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">11</span>
+<span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token operator">*</span>ss<span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">1</span>
 </code></pre>
 
 <p>sizeof的参数时数组名时，计算的是整个数组所占字节，而不是数组首个元素指针所占字节数，切记切记!
 这里在数组后面会自动添加一个“\0”，占一个字节。</p>
+
+<pre class=" language-c"><code class=" language-c"><span class="token keyword">char</span> ss<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"0123456789"</span><span class="token punctuation">;</span>
+<span class="token keyword">sizeof</span><span class="token punctuation">(</span>ss<span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token function">strlen<span class="token punctuation">(</span></span>ss<span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+</code></pre>
+
+<p>strlen内部是用循环计算字符串长度，直到“\0"为止</p>
+
+<pre class=" language-c"><code class=" language-c"><span class="token keyword">int</span> ss<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"0123456789"</span><span class="token punctuation">;</span>
+<span class="token keyword">sizeof</span><span class="token punctuation">(</span>ss<span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">40</span><span class="token comment" spellcheck="true">0//int 占四个字节
+</span><span class="token function">strlen<span class="token punctuation">(</span></span>ss<span class="token punctuation">)</span>发生错误，因为strlen参数
+只能是<span class="token keyword">char</span><span class="token operator">*</span>，且必须以“\<span class="token number">0</span>”结尾
+
+</code></pre>
 
 <p>18  cpu优化规则</p>
 
