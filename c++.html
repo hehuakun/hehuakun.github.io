@@ -135,6 +135,107 @@ $
 
 负数左移 在右边补“0”
 
+13
+
+用加减移位等底层运算实现比较运算
+
+~~~~{c}
+sun=a+b;
+b=a-b;
+a+=b*(b>>sizeof(int)*8-1);
+return sum-a;
+~~~~
+
+该性质实质就是编译器编译比较运算的方法之一
+
+14
+
+不使用中间变量交换a,b
+~~~~{c}
+a=a+b;
+b=a-b;
+a=a-b;
+~~~~
+
+~~~~{c}
+a=a^b
+b=a^b
+a=a^b
+~~~~
+
+这两种方式都可实现a,b交换
+
+15
+
+预处理
+
+'#'开头为预处理，不能以分号结束，c主要包含三种预处理功能：
+
+1 宏定义 2 文件包含 3 条件编译
+
+如
+~~~~{}
+#define MIN(A,B) ((A)<=(B)?(A);(B))
+~~~~
+
+注意两点，1，定义后面A,B都用括弧括起来的，2，以#开头并且没有分号结尾
+
+在使用宏定义时只做简单的置换，不做正确性检查，只在编译已展开的源程序才做语法检查
+
+宏名有效范围为从定义到源文件结束（#undef）
+
+宏名和带参括弧之间不应有空格
+
+因为宏只是简单的置换，所以在字符串中的形参最好加上括弧，以免置换过程中出现意料之外的错误
+
+
+16
+常量定义const的使用
+
+~~~~{}
+int b=500;
+const int *a=&b;
+int const *a=&b;
+int *const *a=&b;
+const int* const a=&b
+~~~~
+
+以上语句只需比较const 与 *的相对位置即可
+
+const 位于*的左侧时，const修饰指针所指向的变量，即表示指针指向常量
+
+const位于*右侧时，const修饰指针本身
+
+17   
+
+sizeof（）方法的使用
+~~~~{c}
+char ss[]="0123456789";
+sizeof(ss)=11
+~~~~
+
+sizeof的参数时数组名时，计算的是整个数组所占字节，而不是数组首个元素指针所占字节数，切记切记!
+这里在数组后面会自动添加一个“\0”，占一个字节。
+
+18  cpu优化规则
+
+在cpu读写数据时，对于n(2,4,8等)字节的数据，如果它的首地址能被n整除，读写效率最高。所以在存储数据时，尽量做到数据对齐（现在一般都由编译器完成）。pack预处理命令就是禁止编译器自动对齐数据。
+
+19   结构体内元素取最长字节对齐
+
+20
+
+静态变量存放在全局数据区
+sizeof计算栈中数据分配大小
+
+21
+
+
+
+
+
+
+
 
 
 
@@ -228,9 +329,9 @@ char*b=(char*)&amp;a;
 </code></pre>
 
 <p>设2的n次方为x,则
-$
+<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2609-Frame" style=""><nobr><span class="math" id="MathJax-Span-18976" role="math" style="width: 4.853em; display: inline-block;"><span style="display: inline-block; position: relative; width: 3.853em; height: 0px; font-size: 125%;"><span style="position: absolute; clip: rect(1.403em 1000.002em 2.702em -999.998em); top: -2.298em; left: 0.003em;"><span class="mrow" id="MathJax-Span-18977"><span class="mo" id="MathJax-Span-18978" style="font-family: MathJax_Main;">!</span><span class="mi" id="MathJax-Span-18979" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-18980" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-18981" style="font-family: MathJax_Math; font-style: italic;">x</span><span class="mo" id="MathJax-Span-18982" style="font-family: MathJax_Main; padding-left: 0.202em;">−</span><span class="mn" id="MathJax-Span-18983" style="font-family: MathJax_Main; padding-left: 0.202em;">1</span><span class="mo" id="MathJax-Span-18984" style="font-family: MathJax_Main;">)</span></span><span style="display: inline-block; width: 0px; height: 2.302em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.378em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-2609">
 !x(x-1
-)$
+)</script>
 的值为</p>
 
 <pre><code>11 111 1111 11111等
@@ -254,6 +355,97 @@ $
 <p>负数右移  在左边补“1”</p>
 
 <p>负数左移 在右边补“0”</p>
+
+<p>13</p>
+
+<p>用加减移位等底层运算实现比较运算</p>
+
+<pre class=" language-c"><code class=" language-c">sun<span class="token operator">=</span>a<span class="token operator">+</span>b<span class="token punctuation">;</span>
+b<span class="token operator">=</span>a<span class="token operator">-</span>b<span class="token punctuation">;</span>
+a<span class="token operator">+</span><span class="token operator">=</span>b<span class="token operator">*</span><span class="token punctuation">(</span>b&gt;&gt;<span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">8</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">return</span> sum<span class="token operator">-</span>a<span class="token punctuation">;</span>
+</code></pre>
+
+<p>该性质实质就是编译器编译比较运算的方法之一</p>
+
+<p>14</p>
+
+<p>不使用中间变量交换a,b</p>
+
+<pre class=" language-c"><code class=" language-c">a<span class="token operator">=</span>a<span class="token operator">+</span>b<span class="token punctuation">;</span>
+b<span class="token operator">=</span>a<span class="token operator">-</span>b<span class="token punctuation">;</span>
+a<span class="token operator">=</span>a<span class="token operator">-</span>b<span class="token punctuation">;</span>
+</code></pre>
+
+<pre class=" language-c"><code class=" language-c">a<span class="token operator">=</span>a<span class="token operator">^</span>b
+b<span class="token operator">=</span>a<span class="token operator">^</span>b
+a<span class="token operator">=</span>a<span class="token operator">^</span>b
+</code></pre>
+
+<p>这两种方式都可实现a,b交换</p>
+
+<p>15</p>
+
+<p>预处理</p>
+
+<p>'#'开头为预处理，不能以分号结束，c主要包含三种预处理功能：</p>
+
+<p>1 宏定义 2 文件包含 3 条件编译</p>
+
+<p>如</p>
+
+<pre><code class="language-">#define MIN(A,B) ((A)&lt;=(B)?(A);(B))
+</code></pre>
+
+<p>注意两点，1，定义后面A,B都用括弧括起来的，2，以#开头并且没有分号结尾</p>
+
+<p>在使用宏定义时只做简单的置换，不做正确性检查，只在编译已展开的源程序才做语法检查</p>
+
+<p>宏名有效范围为从定义到源文件结束（#undef）</p>
+
+<p>宏名和带参括弧之间不应有空格</p>
+
+<p>因为宏只是简单的置换，所以在字符串中的形参最好加上括弧，以免置换过程中出现意料之外的错误</p>
+
+<p>16
+常量定义const的使用</p>
+
+<pre><code class="language-">int b=500;
+const int *a=&amp;b;
+int const *a=&amp;b;
+int *const *a=&amp;b;
+const int* const a=&amp;b
+</code></pre>
+
+<p>以上语句只需比较const 与 *的相对位置即可</p>
+
+<p>const 位于*的左侧时，const修饰指针所指向的变量，即表示指针指向常量</p>
+
+<p>const位于*右侧时，const修饰指针本身</p>
+
+<p>17   </p>
+
+<p>sizeof（）方法的使用</p>
+
+<pre class=" language-c"><code class=" language-c"><span class="token keyword">char</span> ss<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"0123456789"</span><span class="token punctuation">;</span>
+<span class="token keyword">sizeof</span><span class="token punctuation">(</span>ss<span class="token punctuation">)</span><span class="token operator">=</span><span class="token number">11</span>
+</code></pre>
+
+<p>sizeof的参数时数组名时，计算的是整个数组所占字节，而不是数组首个元素指针所占字节数，切记切记!
+这里在数组后面会自动添加一个“\0”，占一个字节。</p>
+
+<p>18  cpu优化规则</p>
+
+<p>在cpu读写数据时，对于n(2,4,8等)字节的数据，如果它的首地址能被n整除，读写效率最高。所以在存储数据时，尽量做到数据对齐（现在一般都由编译器完成）。pack预处理命令就是禁止编译器自动对齐数据。</p>
+
+<p>19   结构体内元素取最长字节对齐</p>
+
+<p>20</p>
+
+<p>静态变量存放在全局数据区
+sizeof计算栈中数据分配大小</p>
+
+<p>21</p>
 <!-- content end -->
 </div>
 <br>
