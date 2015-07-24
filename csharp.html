@@ -181,9 +181,134 @@ c#中,using 关键字有两个主要用途：
 ~~~~
 using (FileStream output = File.Create("binarydata.dat"))
 {
-} 用完之后output会自
+} 用完之后output会自动释放
 ~~~~
 
+9
+
+类和接口
+
+类：分为三种：抽象类，密封类，静态类，下面分别说明
+
+抽象类：若所有子类拥有共同的特性，那么就可以创建一个抽象类，所有子类继承该抽象类
+
+特点：
+
+    1.不能被实例化；ClassName en=new ClassName();//这样会报错
+
+    2.抽象成员必须包含在抽象类中
+
+    3.抽象类除了抽象成员外，还可以包含别的成员(不用关键字 abstract)
+
+    4.子类继承抽象父类后，必须把父类中的所有抽象成员都重写(非抽象成员不必重写)。除非子类也是个抽象类
+
+    5.抽象成员的访问修饰符不能是private
+
+    6.抽象类是有构造函数，虽然不能被实例化
+
+    7.abstract不能用于字段成员，可定义成属性
+
+    8.abstract用于方法时，方法不能定义主体(内容)
+
+    9.抽象类也可以实现接口，但要把接口的成员前面标记个abstract
+
+
+~~~~{c#}
+static void Main(string[] args)
+{
+    Person person = new Person();
+    person.ShowHello();
+    Console.ReadKey();
+}
+//抽象类
+public abstract class Humen
+{
+    public Humen() { Console.WriteLine("Abstract Class .ctor"); }
+
+    public abstract void ShowHello();
+}
+public class Person : Humen
+{
+    public override void ShowHello()
+    {
+　　　　Console.WriteLine("Hello");
+    }
+}
+~~~~
+
+密封类：sealed关键字修饰，不需要子类继承。这种需要做成dll时可以用此防止被改源码
+
+~~~~
+public sealed class human
+{
+}
+public class person:human//错误，不能被继承
+{
+
+}
+
+~~~~
+
+静态类：static 关键字，静态类不需要实例化就可以直接访问类中成员
+
+接口：关键字interface，接口使用的目的是提炼抽象类的共性，或者说是问了多态
+
+特点：
+    1.接口中只能包含方法。（方法、属性、索引器、事件）
+
+    2.接口中的方法不能有任何实现
+
+    3.接口中的成员不能有任何访问修饰符（哪怕是public）
+
+    4.接口不能被实例化
+
+    5.实现接口的类，必须实现接口的所有成员(这里跟抽象类一样)
+
+    6.类不能多继承，所以在某些情况下，只能用接口来代替。接口可以多实现（一个类可以继承多个接口，而只能继承一个类）
+
+    7.接口的主要目的就是为了实现多态
+
+    8.当一个类，同时继承了某个类，并且也实现了某些接口的时候，必须要将继承的类写在第一个(如果一个类同时继承了父类和接口的时候，要把父类写在最前面)
+
+    9.当多个类，都具有某个或某几个功能时（方法），但是这几个类型又不属于相同的系列（这几个类型没有共同的父类，就不能用抽象类。），所以这时，为了实现多态就可以考虑把这几个类型共有的方法提取到一个接口中，让这几个类型分别实现该接口
+
+    10.当父类实现接口，子类继承父类。那么 接口就可以引用子类
+
+    11.不要在一个接口中写过多的方法，避免造成接口污染。可编写多个接口，在每个接口中，分别定义方法
+
+    12.实现接口方法的时候，不要有override关键字，直接跟平常定义一样
+
+    13.接口方法的显式实现，如果多个接口里有相同的方法名。那么第一个方法名默认的引用的是排在最前面的接口，如果要使用后面接口的方法，就要显示实现：接口名.方法名。访问修饰符是private
+
+如当一个父类派生出5个子类时，所有子类中只有3个需要一个功能，也就是说不是所有的子类都需要此功能，那么就可以把次功能放到一个接口里，各子类进行单独的实现。
+接口为了更好的约束子类。
+
+11
+
+CLR
+公共语言运行时（Common Language Runtime,CLR）这是c#中一个非常重要的概念，和Java中的虚拟机类似。它提供内存管理（内存分配和垃圾回收，其中垃圾回收是c#比c++更容易写出稳健程序的关键）和保证底层操作系统和应用程序的必要隔离
+
+12
+
+  C#5种类型的可访问性
+
+       public：成员可以从任何代码访问。
+
+       protected：成员只能从派生类访问。
+
+      internal：成员只能从同一程序集的内部访问。
+
+      protected internal：成员只能从同一程序集内的派生类访问。
+
+      private：成员只能在当前类的内部访问。
+
+13
+
+静态成员和非静态成员区别
+
+
+
+ 
 
 
 
@@ -343,8 +468,130 @@ finally
 
 <pre><code>using (FileStream output = File.Create("binarydata.dat"))
 {
-} 用完之后output会自
+} 用完之后output会自动释放
 </code></pre>
+
+<p>9</p>
+
+<p>类和接口</p>
+
+<p>类：分为三种：抽象类，密封类，静态类，下面分别说明</p>
+
+<p>抽象类：若所有子类拥有共同的特性，那么就可以创建一个抽象类，所有子类继承该抽象类</p>
+
+<p>特点：</p>
+
+<pre><code>1.不能被实例化；ClassName en=new ClassName();//这样会报错
+
+2.抽象成员必须包含在抽象类中
+
+3.抽象类除了抽象成员外，还可以包含别的成员(不用关键字 abstract)
+
+4.子类继承抽象父类后，必须把父类中的所有抽象成员都重写(非抽象成员不必重写)。除非子类也是个抽象类
+
+5.抽象成员的访问修饰符不能是private
+
+6.抽象类是有构造函数，虽然不能被实例化
+
+7.abstract不能用于字段成员，可定义成属性
+
+8.abstract用于方法时，方法不能定义主体(内容)
+
+9.抽象类也可以实现接口，但要把接口的成员前面标记个abstract
+</code></pre>
+
+<pre class=" language-c"><code class="# language-c"><span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">Main<span class="token punctuation">(</span></span>string<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+    Person person <span class="token operator">=</span> new <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    person<span class="token punctuation">.</span><span class="token function">ShowHello<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Console<span class="token punctuation">.</span><span class="token function">ReadKey<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token comment" spellcheck="true">
+//抽象类
+</span>public abstract class <span class="token class-name">Humen</span>
+<span class="token punctuation">{</span>
+    public <span class="token function">Humen<span class="token punctuation">(</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> Console<span class="token punctuation">.</span><span class="token function">WriteLine<span class="token punctuation">(</span></span><span class="token string">"Abstract Class .ctor"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">}</span>
+
+    public abstract <span class="token keyword">void</span> <span class="token function">ShowHello<span class="token punctuation">(</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+public class <span class="token class-name">Person</span> <span class="token punctuation">:</span> Humen
+<span class="token punctuation">{</span>
+    public override <span class="token keyword">void</span> <span class="token function">ShowHello<span class="token punctuation">(</span></span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+　　　　Console<span class="token punctuation">.</span><span class="token function">WriteLine<span class="token punctuation">(</span></span><span class="token string">"Hello"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<p>密封类：sealed关键字修饰，不需要子类继承。这种需要做成dll时可以用此防止被改源码</p>
+
+<pre><code>public sealed class human
+{
+}
+public class person:human//错误，不能被继承
+{
+
+}
+
+</code></pre>
+
+<p>静态类：static 关键字，静态类不需要实例化就可以直接访问类中成员</p>
+
+<p>接口：关键字interface，接口使用的目的是提炼抽象类的共性，或者说是问了多态</p>
+
+<p>特点：
+    1.接口中只能包含方法。（方法、属性、索引器、事件）</p>
+
+<pre><code>2.接口中的方法不能有任何实现
+
+3.接口中的成员不能有任何访问修饰符（哪怕是public）
+
+4.接口不能被实例化
+
+5.实现接口的类，必须实现接口的所有成员(这里跟抽象类一样)
+
+6.类不能多继承，所以在某些情况下，只能用接口来代替。接口可以多实现（一个类可以继承多个接口，而只能继承一个类）
+
+7.接口的主要目的就是为了实现多态
+
+8.当一个类，同时继承了某个类，并且也实现了某些接口的时候，必须要将继承的类写在第一个(如果一个类同时继承了父类和接口的时候，要把父类写在最前面)
+
+9.当多个类，都具有某个或某几个功能时（方法），但是这几个类型又不属于相同的系列（这几个类型没有共同的父类，就不能用抽象类。），所以这时，为了实现多态就可以考虑把这几个类型共有的方法提取到一个接口中，让这几个类型分别实现该接口
+
+10.当父类实现接口，子类继承父类。那么 接口就可以引用子类
+
+11.不要在一个接口中写过多的方法，避免造成接口污染。可编写多个接口，在每个接口中，分别定义方法
+
+12.实现接口方法的时候，不要有override关键字，直接跟平常定义一样
+
+13.接口方法的显式实现，如果多个接口里有相同的方法名。那么第一个方法名默认的引用的是排在最前面的接口，如果要使用后面接口的方法，就要显示实现：接口名.方法名。访问修饰符是private
+</code></pre>
+
+<p>如当一个父类派生出5个子类时，所有子类中只有3个需要一个功能，也就是说不是所有的子类都需要此功能，那么就可以把次功能放到一个接口里，各子类进行单独的实现。
+接口为了更好的约束子类。</p>
+
+<p>11</p>
+
+<p>CLR
+公共语言运行时（Common Language Runtime,CLR）这是c#中一个非常重要的概念，和Java中的虚拟机类似。它提供内存管理（内存分配和垃圾回收，其中垃圾回收是c#比c++更容易写出稳健程序的关键）和保证底层操作系统和应用程序的必要隔离</p>
+
+<p>12</p>
+
+<p>C#5种类型的可访问性</p>
+
+<pre><code>   public：成员可以从任何代码访问。
+
+   protected：成员只能从派生类访问。
+
+  internal：成员只能从同一程序集的内部访问。
+
+  protected internal：成员只能从同一程序集内的派生类访问。
+
+  private：成员只能在当前类的内部访问。
+</code></pre>
+
+<p>13</p>
+
+<p>静态成员和非静态成员区别</p>
 <!-- content end -->
 </div>
 <br>
