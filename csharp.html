@@ -304,7 +304,30 @@ CLR
 
 13
 
-静态成员和非静态成员区别
+extern 用法， 修饰符用于声明由程序集外部实现的成员函数
+
+~~~~
+
+  //extern与DllImport一起使用时必须再加上一个static修饰符
+        [DllImport("User32.dll")]
+        public static extern int MessageBox(int Handle, string Message, string Caption, int Type);
+ ~~~~
+
+在调用c++写的程序集时，只能通过dllimport
+
+14
+
+什么是索引指示器
+
+实现索引指示器（indexer）的类可以象数组那样使用其实例后的对象，但与数组不同的是索引指示器的参数类型不仅限于int
+
+简单来说，其本质就是一个含参数属性
+
+
+
+
+
+
 
 
 
@@ -591,7 +614,23 @@ public class person:human//错误，不能被继承
 
 <p>13</p>
 
-<p>静态成员和非静态成员区别</p>
+<p>extern 用法， 修饰符用于声明由程序集外部实现的成员函数</p>
+
+<pre><code>
+  //extern与DllImport一起使用时必须再加上一个static修饰符
+        [DllImport("User32.dll")]
+        public static extern int MessageBox(int Handle, string Message, string Caption, int Type);
+ </code></pre>
+
+<p>在调用c++写的程序集时，只能通过dllimport</p>
+
+<p>14</p>
+
+<p>什么是索引指示器</p>
+
+<p>实现索引指示器（indexer）的类可以象数组那样使用其实例后的对象，但与数组不同的是索引指示器的参数类型不仅限于int</p>
+
+<p>简单来说，其本质就是一个含参数属性</p>
 <!-- content end -->
 </div>
 <br>
