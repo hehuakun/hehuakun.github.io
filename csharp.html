@@ -323,6 +323,51 @@ extern 用法， 修饰符用于声明由程序集外部实现的成员函数
 
 简单来说，其本质就是一个含参数属性
 
+15
+this关键字的作用
+
+this 是一个保留字，仅限于构造函数和方法成员中使用
+
+在类的构造函数中出现表示对正在构造的对象本身的引用，在类的方法中出现表示对调用该方法的对象的引用，在结构的构造函数中出现表示对正在构造的结构的引用，在结构的方法中出现表示对调用该方法的结果的引用
+
+this 保留字不能用于静态成员的实现里，因为这时对象或结构并未实例化
+
+在 C# 系统中，this 实际上是一个常量，所以不能使用 this++ 这样的运算
+
+this 保留字一般用于限定同名的隐藏成员、将对象本身做为参数、声明索引访问器、判断传入参数的对象是否为本身
+
+
+16
+
+抽象函数还可以重写基类中的虚函数吗？？？
+
+完全没问题的！
+
+~~~~
+class BaseClass
+    {
+        public virtual void F()
+        {
+            Console.WriteLine("BaseClass.F");
+        }
+    }
+    abstract class  DeriveClass1 : BaseClass
+    {
+        public abstract new void F();//这种方法使用new关键字显式的声明是实现的重写，这也算new关键字的不常用用法之一了
+    }
+~~~~
+
+~~~~
+ abstract class DeriveClass2 : BaseClass
+    {
+        public abstract override void F();//这种方法是用常规的override实现，当然也可以
+    }
+~~~~
+
+
+ 
+
+
 
 
 
@@ -332,7 +377,6 @@ extern 用法， 修饰符用于声明由程序集外部实现的成员函数
 
 
  
-
 
 
 
@@ -631,6 +675,44 @@ public class person:human//错误，不能被继承
 <p>实现索引指示器（indexer）的类可以象数组那样使用其实例后的对象，但与数组不同的是索引指示器的参数类型不仅限于int</p>
 
 <p>简单来说，其本质就是一个含参数属性</p>
+
+<p>15
+this关键字的作用</p>
+
+<p>this 是一个保留字，仅限于构造函数和方法成员中使用</p>
+
+<p>在类的构造函数中出现表示对正在构造的对象本身的引用，在类的方法中出现表示对调用该方法的对象的引用，在结构的构造函数中出现表示对正在构造的结构的引用，在结构的方法中出现表示对调用该方法的结果的引用</p>
+
+<p>this 保留字不能用于静态成员的实现里，因为这时对象或结构并未实例化</p>
+
+<p>在 C# 系统中，this 实际上是一个常量，所以不能使用 this++ 这样的运算</p>
+
+<p>this 保留字一般用于限定同名的隐藏成员、将对象本身做为参数、声明索引访问器、判断传入参数的对象是否为本身</p>
+
+<p>16</p>
+
+<p>抽象函数还可以重写基类中的虚函数吗？？？</p>
+
+<p>完全没问题的！</p>
+
+<pre><code>class BaseClass
+    {
+        public virtual void F()
+        {
+            Console.WriteLine("BaseClass.F");
+        }
+    }
+    abstract class  DeriveClass1 : BaseClass
+    {
+        public abstract new void F();//这种方法使用new关键字显式的声明是实现的重写，这也算new关键字的不常用用法之一了
+    }
+</code></pre>
+
+<pre><code> abstract class DeriveClass2 : BaseClass
+    {
+        public abstract override void F();//这种方法是用常规的override实现，当然也可以
+    }
+</code></pre>
 <!-- content end -->
 </div>
 <br>
