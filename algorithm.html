@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+1   排序
+
+（1） 最经典的要算冒泡排序了，冒泡排序的核心在于一个简单的思想：通过相邻位置的两两比较，总能找到待排序数列中的极值（极大值或极小值）。那么我们只要对剩下的所有待排序数列一直按这种两两比较的方法找到极值（注意是极值，不是最值），直到比较完最后两个数（即最终待比较数列只剩下一个数），此时就将待排序数列按照非增长或非减少顺序排列了。
+
+还不清楚？下面再详解：
+
+考虑最简单的情况，两个不同的数怎么找出其中较大的数？？
+
+当然是比较他们的大小，比较大的数就是较大的数。
+
+然后考虑三个不同的数，怎么找出他们较大的数（注意只是找出较大的数，不是排序）？？
+
+假设三个数是A ，B， C，先比较A，B找出其中较大的数，然后用这个较大的数去和C比较，然后就可以得到三个数中较大的数了。是不是？？
+
+然后依次类推，最后我们得出找到n个数中的极值需要比较（n-1）次
+
+对这个算法进行分析，假设最坏的情况是待比较数列是按非增长的顺序排列的，现在我们要用冒泡排序按照非减少的顺序排列，那么我们在找这n个数中极大值时就需要比较（n-1）次，然后找剩下的（n-1）个待比较数列的极大值时需要比较（n-2）次，依次类推，直到最后两个数比较一次。算算我们比较了多少次
+
+$1+2+3+...+(n-1)=n(n-1)/2$
+
+这是该算法最坏情况的时间复杂度。
+
+其实对于冒泡算法除了在比较完最后两个数结束外，还有一个结束条件，就是在一轮比较中，如果未发生交换，那么说明接下来的数已经是按照要求排列好的了。
+
+比如，数列本身就是按照非增长排序的，现在仍然要求按照非增长排序。那么在找第一个极小值时，数列未发生交换，这个时候后面就不用比较了。
+
+此时比较了
+
+$n-1$次
+
+
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<p>1   排序</p>
+
+<p>（1） 最经典的要算冒泡排序了，冒泡排序的核心在于一个简单的思想：通过相邻位置的两两比较，总能找到待排序数列中的极值（极大值或极小值）。那么我们只要对剩下的所有待排序数列一直按这种两两比较的方法找到极值（注意是极值，不是最值），直到比较完最后两个数（即最终待比较数列只剩下一个数），此时就将待排序数列按照非增长或非减少顺序排列了。</p>
+
+<p>还不清楚？下面再详解：</p>
+
+<p>考虑最简单的情况，两个不同的数怎么找出其中较大的数？？</p>
+
+<p>当然是比较他们的大小，比较大的数就是较大的数。</p>
+
+<p>然后考虑三个不同的数，怎么找出他们较大的数（注意只是找出较大的数，不是排序）？？</p>
+
+<p>假设三个数是A ，B， C，先比较A，B找出其中较大的数，然后用这个较大的数去和C比较，然后就可以得到三个数中较大的数了。是不是？？</p>
+
+<p>然后依次类推，最后我们得出找到n个数中的极值需要比较（n-1）次</p>
+
+<p>对这个算法进行分析，假设最坏的情况是待比较数列是按非增长的顺序排列的，现在我们要用冒泡排序按照非减少的顺序排列，那么我们在找这n个数中极大值时就需要比较（n-1）次，然后找剩下的（n-1）个待比较数列的极大值时需要比较（n-2）次，依次类推，直到最后两个数比较一次。算算我们比较了多少次</p>
+
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-559-Frame" style=""><nobr><span class="math" id="MathJax-Span-12428" role="math" style="width: 21.204em; display: inline-block;"><span style="display: inline-block; position: relative; width: 16.3em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.445em 1000.002em 2.743em -999.998em); top: -2.353em; left: 0.002em;"><span class="mrow" id="MathJax-Span-12429"><span class="mn" id="MathJax-Span-12430" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-12431" style="font-family: MathJax_Main; padding-left: 0.243em;">+</span><span class="mn" id="MathJax-Span-12432" style="font-family: MathJax_Main; padding-left: 0.243em;">2</span><span class="mo" id="MathJax-Span-12433" style="font-family: MathJax_Main; padding-left: 0.243em;">+</span><span class="mn" id="MathJax-Span-12434" style="font-family: MathJax_Main; padding-left: 0.243em;">3</span><span class="mo" id="MathJax-Span-12435" style="font-family: MathJax_Main;">+</span><span class="mo" id="MathJax-Span-12436" style="font-family: MathJax_Main;">.</span><span class="mo" id="MathJax-Span-12437" style="font-family: MathJax_Main; padding-left: 0.147em;">.</span><span class="mo" id="MathJax-Span-12438" style="font-family: MathJax_Main; padding-left: 0.147em;">.</span><span class="mo" id="MathJax-Span-12439" style="font-family: MathJax_Main; padding-left: 0.147em;">+</span><span class="mo" id="MathJax-Span-12440" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-12441" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-12442" style="font-family: MathJax_Main; padding-left: 0.243em;">−</span><span class="mn" id="MathJax-Span-12443" style="font-family: MathJax_Main; padding-left: 0.243em;">1</span><span class="mo" id="MathJax-Span-12444" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-12445" style="font-family: MathJax_Main; padding-left: 0.291em;">=</span><span class="mi" id="MathJax-Span-12446" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.291em;">n</span><span class="mo" id="MathJax-Span-12447" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-12448" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-12449" style="font-family: MathJax_Main; padding-left: 0.243em;">−</span><span class="mn" id="MathJax-Span-12450" style="font-family: MathJax_Main; padding-left: 0.243em;">1</span><span class="mo" id="MathJax-Span-12451" style="font-family: MathJax_Main;">)</span><span class="texatom" id="MathJax-Span-12452"><span class="mrow" id="MathJax-Span-12453"><span class="mo" id="MathJax-Span-12454" style="font-family: MathJax_Main;">/</span></span></span><span class="mn" id="MathJax-Span-12455" style="font-family: MathJax_Main;">2</span></span><span style="display: inline-block; width: 0px; height: 2.358em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.441em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-559">1+2+3+...+(n-1)=n(n-1)/2</script></p>
+
+<p>这是该算法最坏情况的时间复杂度。</p>
+
+<p>其实对于冒泡算法除了在比较完最后两个数结束外，还有一个结束条件，就是在一轮比较中，如果未发生交换，那么说明接下来的数已经是按照要求排列好的了。</p>
+
+<p>比如，数列本身就是按照非增长排序的，现在仍然要求按照非增长排序。那么在找第一个极小值时，数列未发生交换，这个时候后面就不用比较了。</p>
+
+<p>此时比较了</p>
+
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-560-Frame" style=""><nobr><span class="math" id="MathJax-Span-12456" role="math" style="width: 3.127em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.406em; height: 0px; font-size: 130%;"><span style="position: absolute; clip: rect(1.541em 1000.002em 2.502em -999.998em); top: -2.353em; left: 0.002em;"><span class="mrow" id="MathJax-Span-12457"><span class="mi" id="MathJax-Span-12458" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-12459" style="font-family: MathJax_Main; padding-left: 0.243em;">−</span><span class="mn" id="MathJax-Span-12460" style="font-family: MathJax_Main; padding-left: 0.243em;">1</span></span><span style="display: inline-block; width: 0px; height: 2.358em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.003em; vertical-align: -0.059em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-560">n-1</script>次</p>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "algorithm.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
