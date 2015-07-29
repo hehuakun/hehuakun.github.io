@@ -157,7 +157,7 @@ else
 }
 ~~~~
 
-这段代码的高明细腻之处在于使用了一张无穷大的哨兵牌来避免每次取扑克之后都得坚持牌堆是否为空。下面在上一段相同功能的代码。
+这段代码的高明细腻之处在于使用了一张无穷大的哨兵牌来避免每次取扑克之后都得检测牌堆是否为空。下面在上一段相同功能的代码。
 
 
 
@@ -194,9 +194,9 @@ else
 
 <p>对这个算法进行分析，假设最坏的情况是待比较数列是按非增长的顺序排列的，现在我们要用冒泡排序按照非减少的顺序排列，那么我们在找这n个数中极大值时就需要比较（n-1）次，然后找剩下的（n-1）个待比较数列的极大值时需要比较（n-2）次，依次类推，直到最后两个数比较一次。算算我们比较了多少次</p>
 
-<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1631-Frame" style=""><nobr><span class="math" id="MathJax-Span-23845" role="math" style="width: 20.899em; display: inline-block;"><span style="display: inline-block; position: relative; width: 15.938em; height: 0px; font-size: 131%;"><span style="position: absolute; clip: rect(1.386em 1000.002em 2.674em -999.998em); top: -2.288em; left: 0.002em;"><span class="mrow" id="MathJax-Span-23846"><span class="mn" id="MathJax-Span-23847" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-23848" style="font-family: MathJax_Main; padding-left: 0.241em;">+</span><span class="mn" id="MathJax-Span-23849" style="font-family: MathJax_Main; padding-left: 0.241em;">2</span><span class="mo" id="MathJax-Span-23850" style="font-family: MathJax_Main; padding-left: 0.241em;">+</span><span class="mn" id="MathJax-Span-23851" style="font-family: MathJax_Main; padding-left: 0.241em;">3</span><span class="mo" id="MathJax-Span-23852" style="font-family: MathJax_Main;">+</span><span class="mo" id="MathJax-Span-23853" style="font-family: MathJax_Main;">.</span><span class="mo" id="MathJax-Span-23854" style="font-family: MathJax_Main; padding-left: 0.146em;">.</span><span class="mo" id="MathJax-Span-23855" style="font-family: MathJax_Main; padding-left: 0.146em;">.</span><span class="mo" id="MathJax-Span-23856" style="font-family: MathJax_Main; padding-left: 0.146em;">+</span><span class="mo" id="MathJax-Span-23857" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-23858" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-23859" style="font-family: MathJax_Main; padding-left: 0.241em;">−</span><span class="mn" id="MathJax-Span-23860" style="font-family: MathJax_Main; padding-left: 0.241em;">1</span><span class="mo" id="MathJax-Span-23861" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-23862" style="font-family: MathJax_Main; padding-left: 0.289em;">=</span><span class="mi" id="MathJax-Span-23863" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.289em;">n</span><span class="mo" id="MathJax-Span-23864" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-23865" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-23866" style="font-family: MathJax_Main; padding-left: 0.241em;">−</span><span class="mn" id="MathJax-Span-23867" style="font-family: MathJax_Main; padding-left: 0.241em;">1</span><span class="mo" id="MathJax-Span-23868" style="font-family: MathJax_Main;">)</span><span class="texatom" id="MathJax-Span-23869"><span class="mrow" id="MathJax-Span-23870"><span class="mo" id="MathJax-Span-23871" style="font-family: MathJax_Main;">/</span></span></span><span class="mn" id="MathJax-Span-23872" style="font-family: MathJax_Main;">2</span></span><span style="display: inline-block; width: 0px; height: 2.292em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.441em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-1631">
+<p>$
 1+2+3+...+(n-1)=n(n-1)/2
-</script>次</p>
+$次</p>
 
 <p>这是该算法最坏情况的时间复杂度。</p>
 
@@ -206,7 +206,7 @@ else
 
 <p>此时比较了</p>
 
-<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1632-Frame" style=""><nobr><span class="math" id="MathJax-Span-23873" role="math" style="width: 3.104em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.34em; height: 0px; font-size: 131%;"><span style="position: absolute; clip: rect(1.481em 1000.002em 2.436em -999.998em); top: -2.288em; left: 0.002em;"><span class="mrow" id="MathJax-Span-23874"><span class="mi" id="MathJax-Span-23875" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-23876" style="font-family: MathJax_Main; padding-left: 0.241em;">−</span><span class="mn" id="MathJax-Span-23877" style="font-family: MathJax_Main; padding-left: 0.241em;">1</span></span><span style="display: inline-block; width: 0px; height: 2.292em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.003em; vertical-align: -0.059em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-1632">n-1</script>次</p>
+<p>$n-1$次</p>
 
 <p>下面上一段风骚细腻的代码</p>
 
@@ -303,7 +303,7 @@ else
 }
 </code></pre>
 
-<p>这段代码的高明细腻之处在于使用了一张无穷大的哨兵牌来避免每次取扑克之后都得坚持牌堆是否为空。下面在上一段相同功能的代码。</p>
+<p>这段代码的高明细腻之处在于使用了一张无穷大的哨兵牌来避免每次取扑克之后都得检测牌堆是否为空。下面在上一段相同功能的代码。</p>
 <!-- content end -->
 </div>
 <br>
