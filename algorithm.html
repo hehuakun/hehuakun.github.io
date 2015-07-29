@@ -133,11 +133,31 @@ for(int j=1;j<n;j++)//为什么从1开始而不是0，因为第一张牌不需�
 ~~~~
 //《算法导论》
 //假设A[p,q]和A[q+1,r]是排好序的两个子序列
-1    n1=q-p+1;//代表A[p,q]的元素个数
-2    n2=r-q;//代表A[q+1,r]的元素个数
-3    
-~~~~
+ n1=q-p+1;  //代表A[p,q]的元素个数
+ n2=r-q;  //代表A[q+1,r]的元素个数
+creat arrays L[1,n1+1] and R[1,n2+!];  //创建两个新的数列，多出的一个位置是用来放无穷大的哨兵牌的
+for(int1i=0,i<=n1;i++)
+L[i]=A[p+i-1]; //将A[p,q]转到L[1，n1]中
+for(int j=1;j<=n2;j++)
+R[j]=A[q=i-1];
+L[n1+1]=无穷;
+R[n2+1]=无穷;
+//  开始实施上述想法
+for(int i=1,int j=1,int k=p;p<=r;p++)
+{
+if(L[i]<=R[j])
+    {A[k]=L[i];
+    i=i+1;
+}
+else
+{
+A[k]=R[j];
+j=j+1;
+}
 
+}
+  
+~~~~
 
 
 
@@ -173,9 +193,9 @@ for(int j=1;j<n;j++)//为什么从1开始而不是0，因为第一张牌不需�
 
 <p>对这个算法进行分析，假设最坏的情况是待比较数列是按非增长的顺序排列的，现在我们要用冒泡排序按照非减少的顺序排列，那么我们在找这n个数中极大值时就需要比较（n-1）次，然后找剩下的（n-1）个待比较数列的极大值时需要比较（n-2）次，依次类推，直到最后两个数比较一次。算算我们比较了多少次</p>
 
-<p>$
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1267-Frame" style=""><nobr><span class="math" id="MathJax-Span-19004" role="math" style="width: 20.899em; display: inline-block;"><span style="display: inline-block; position: relative; width: 15.938em; height: 0px; font-size: 131%;"><span style="position: absolute; clip: rect(1.386em 1000.002em 2.674em -999.998em); top: -2.288em; left: 0.002em;"><span class="mrow" id="MathJax-Span-19005"><span class="mn" id="MathJax-Span-19006" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-19007" style="font-family: MathJax_Main; padding-left: 0.241em;">+</span><span class="mn" id="MathJax-Span-19008" style="font-family: MathJax_Main; padding-left: 0.241em;">2</span><span class="mo" id="MathJax-Span-19009" style="font-family: MathJax_Main; padding-left: 0.241em;">+</span><span class="mn" id="MathJax-Span-19010" style="font-family: MathJax_Main; padding-left: 0.241em;">3</span><span class="mo" id="MathJax-Span-19011" style="font-family: MathJax_Main;">+</span><span class="mo" id="MathJax-Span-19012" style="font-family: MathJax_Main;">.</span><span class="mo" id="MathJax-Span-19013" style="font-family: MathJax_Main; padding-left: 0.146em;">.</span><span class="mo" id="MathJax-Span-19014" style="font-family: MathJax_Main; padding-left: 0.146em;">.</span><span class="mo" id="MathJax-Span-19015" style="font-family: MathJax_Main; padding-left: 0.146em;">+</span><span class="mo" id="MathJax-Span-19016" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-19017" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-19018" style="font-family: MathJax_Main; padding-left: 0.241em;">−</span><span class="mn" id="MathJax-Span-19019" style="font-family: MathJax_Main; padding-left: 0.241em;">1</span><span class="mo" id="MathJax-Span-19020" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-19021" style="font-family: MathJax_Main; padding-left: 0.289em;">=</span><span class="mi" id="MathJax-Span-19022" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.289em;">n</span><span class="mo" id="MathJax-Span-19023" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-19024" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-19025" style="font-family: MathJax_Main; padding-left: 0.241em;">−</span><span class="mn" id="MathJax-Span-19026" style="font-family: MathJax_Main; padding-left: 0.241em;">1</span><span class="mo" id="MathJax-Span-19027" style="font-family: MathJax_Main;">)</span><span class="texatom" id="MathJax-Span-19028"><span class="mrow" id="MathJax-Span-19029"><span class="mo" id="MathJax-Span-19030" style="font-family: MathJax_Main;">/</span></span></span><span class="mn" id="MathJax-Span-19031" style="font-family: MathJax_Main;">2</span></span><span style="display: inline-block; width: 0px; height: 2.292em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.441em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-1267">
 1+2+3+...+(n-1)=n(n-1)/2
-$次</p>
+</script>次</p>
 
 <p>这是该算法最坏情况的时间复杂度。</p>
 
@@ -185,7 +205,7 @@ $次</p>
 
 <p>此时比较了</p>
 
-<p>$n-1$次</p>
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1268-Frame" style=""><nobr><span class="math" id="MathJax-Span-19032" role="math" style="width: 3.104em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.34em; height: 0px; font-size: 131%;"><span style="position: absolute; clip: rect(1.481em 1000.002em 2.436em -999.998em); top: -2.288em; left: 0.002em;"><span class="mrow" id="MathJax-Span-19033"><span class="mi" id="MathJax-Span-19034" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-19035" style="font-family: MathJax_Main; padding-left: 0.241em;">−</span><span class="mn" id="MathJax-Span-19036" style="font-family: MathJax_Main; padding-left: 0.241em;">1</span></span><span style="display: inline-block; width: 0px; height: 2.292em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.003em; vertical-align: -0.059em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-1268">n-1</script>次</p>
 
 <p>下面上一段风骚细腻的代码</p>
 
@@ -258,9 +278,30 @@ for(int j=1;j&lt;n;j++)//为什么从1开始而不是0，因为第一张牌不�
 
 <pre><code>//《算法导论》
 //假设A[p,q]和A[q+1,r]是排好序的两个子序列
-1    n1=q-p+1;//代表A[p,q]的元素个数
-2    n2=r-q;//代表A[q+1,r]的元素个数
-3    
+ n1=q-p+1;  //代表A[p,q]的元素个数
+ n2=r-q;  //代表A[q+1,r]的元素个数
+creat arrays L[1,n1+1] and R[1,n2+!];  //创建两个新的数列，多出的一个位置是用来放无穷大的哨兵牌的
+for(int1i=0,i&lt;=n1;i++)
+L[i]=A[p+i-1]; //将A[p,q]转到L[1，n1]中
+for(int j=1;j&lt;=n2;j++)
+R[j]=A[q=i-1];
+L[n1+1]=无穷;
+R[n2+1]=无穷;
+//  开始实施上述想法
+for(int i=1,int j=1,int k=p;p&lt;=r;p++)
+{
+if(L[i]&lt;=R[j])
+    {A[k]=L[i];
+    i=i+1;
+}
+else
+{
+A[k]=R[j];
+j=j+1;
+}
+
+}
+
 </code></pre>
 <!-- content end -->
 </div>
