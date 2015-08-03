@@ -26,11 +26,48 @@
 <div id="md" style="display: none;">
 <!-- markdown -->
 1 Android Activity
+
+Android Activity 就是展示的控件，Android app通过Activity的切换来展示程序的功能
+
+绑定视图：
+Activity展现的视图通过绑定R.layout里面的视图布局来实现。用到
+SetContentView(R.layout.xx)函数来实现视图绑定。
+
+启动另一个Activity:通过如下代码实现
+
+~~~~
+findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,AnotherActivity.class));
+            }
+        }
+~~~~
+
+
+
+
 <!-- markdown end -->
 </div>
 <div class="entry" id="main">
 <!-- content -->
 <p>1 Android Activity</p>
+
+<p>Android Activity 就是展示的控件，Android app通过Activity的切换来展示程序的功能</p>
+
+<p>绑定视图：
+Activity展现的视图通过绑定R.layout里面的视图布局来实现。用到
+SetContentView(R.layout.xx)函数来实现视图绑定。</p>
+
+<p>启动另一个Activity:通过如下代码实现</p>
+
+<pre><code>findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,AnotherActivity.class));
+            }
+        }
+</code></pre>
 <!-- content end -->
 </div>
 <br>
