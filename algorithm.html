@@ -27,6 +27,21 @@
 <!-- markdown -->
 1   排序
 
+排序分类：
+
+插入	直接插入	折半插入	2-路插入	表插入 希尔
+
+交换	冒泡	快速		
+	
+选择	树形选择	堆排		
+	
+归并	2-路归并		
+		
+基数	基数		
+
+下面从最简单开始		
+
+
 （1） 最经典的要算冒泡排序了，冒泡排序的核心在于一个简单的思想：通过相邻位置的两两比较，总能找到待排序数列中的极值（极大值或极小值）。那么我们只要对剩下的所有待排序数列一直按这种两两比较的方法找到极值（注意是极值，不是最值），直到比较完最后两个数（即最终待比较数列只剩下一个数），此时就将待排序数列按照非增长或非减少顺序排列了。
 
 还不清楚？下面再详解：
@@ -178,6 +193,20 @@ else
 <!-- content -->
 <p>1   排序</p>
 
+<p>排序分类：</p>
+
+<p>插入    直接插入    折半插入    2-路插入   表插入 希尔</p>
+
+<p>交换    冒泡  快速      </p>
+
+<p>选择    树形选择    堆排      </p>
+
+<p>归并    2-路归并       </p>
+
+<p>基数    基数      </p>
+
+<p>下面从最简单开始        </p>
+
 <p>（1） 最经典的要算冒泡排序了，冒泡排序的核心在于一个简单的思想：通过相邻位置的两两比较，总能找到待排序数列中的极值（极大值或极小值）。那么我们只要对剩下的所有待排序数列一直按这种两两比较的方法找到极值（注意是极值，不是最值），直到比较完最后两个数（即最终待比较数列只剩下一个数），此时就将待排序数列按照非增长或非减少顺序排列了。</p>
 
 <p>还不清楚？下面再详解：</p>
@@ -194,9 +223,9 @@ else
 
 <p>对这个算法进行分析，假设最坏的情况是待比较数列是按非增长的顺序排列的，现在我们要用冒泡排序按照非减少的顺序排列，那么我们在找这n个数中极大值时就需要比较（n-1）次，然后找剩下的（n-1）个待比较数列的极大值时需要比较（n-2）次，依次类推，直到最后两个数比较一次。算算我们比较了多少次</p>
 
-<p>$
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-113-Frame" style=""><nobr><span class="math" id="MathJax-Span-1552" role="math" style="width: 20.081em; display: inline-block;"><span style="display: inline-block; position: relative; width: 15.8em; height: 0px; font-size: 127%;"><span style="position: absolute; clip: rect(1.38em 1000.002em 2.66em -999.998em); top: -2.261em; left: 0.002em;"><span class="mrow" id="MathJax-Span-1553"><span class="mn" id="MathJax-Span-1554" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-1555" style="font-family: MathJax_Main; padding-left: 0.249em;">+</span><span class="mn" id="MathJax-Span-1556" style="font-family: MathJax_Main; padding-left: 0.249em;">2</span><span class="mo" id="MathJax-Span-1557" style="font-family: MathJax_Main; padding-left: 0.249em;">+</span><span class="mn" id="MathJax-Span-1558" style="font-family: MathJax_Main; padding-left: 0.249em;">3</span><span class="mo" id="MathJax-Span-1559" style="font-family: MathJax_Main;">+</span><span class="mo" id="MathJax-Span-1560" style="font-family: MathJax_Main;">.</span><span class="mo" id="MathJax-Span-1561" style="font-family: MathJax_Main; padding-left: 0.15em;">.</span><span class="mo" id="MathJax-Span-1562" style="font-family: MathJax_Main; padding-left: 0.15em;">.</span><span class="mo" id="MathJax-Span-1563" style="font-family: MathJax_Main; padding-left: 0.15em;">+</span><span class="mo" id="MathJax-Span-1564" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-1565" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-1566" style="font-family: MathJax_Main; padding-left: 0.249em;">−</span><span class="mn" id="MathJax-Span-1567" style="font-family: MathJax_Main; padding-left: 0.249em;">1</span><span class="mo" id="MathJax-Span-1568" style="font-family: MathJax_Main;">)</span><span class="mo" id="MathJax-Span-1569" style="font-family: MathJax_Main; padding-left: 0.298em;">=</span><span class="mi" id="MathJax-Span-1570" style="font-family: MathJax_Math; font-style: italic; padding-left: 0.298em;">n</span><span class="mo" id="MathJax-Span-1571" style="font-family: MathJax_Main;">(</span><span class="mi" id="MathJax-Span-1572" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-1573" style="font-family: MathJax_Main; padding-left: 0.249em;">−</span><span class="mn" id="MathJax-Span-1574" style="font-family: MathJax_Main; padding-left: 0.249em;">1</span><span class="mo" id="MathJax-Span-1575" style="font-family: MathJax_Main;">)</span><span class="texatom" id="MathJax-Span-1576"><span class="mrow" id="MathJax-Span-1577"><span class="mo" id="MathJax-Span-1578" style="font-family: MathJax_Main;">/</span></span></span><span class="mn" id="MathJax-Span-1579" style="font-family: MathJax_Main;">2</span></span><span style="display: inline-block; width: 0px; height: 2.266em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.378em; vertical-align: -0.372em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-113">
 1+2+3+...+(n-1)=n(n-1)/2
-$次</p>
+</script>次</p>
 
 <p>这是该算法最坏情况的时间复杂度。</p>
 
@@ -206,7 +235,7 @@ $次</p>
 
 <p>此时比较了</p>
 
-<p>$n-1$次</p>
+<p><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-114-Frame" style=""><nobr><span class="math" id="MathJax-Span-1580" role="math" style="width: 2.955em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.315em; height: 0px; font-size: 127%;"><span style="position: absolute; clip: rect(1.43em 1000.002em 2.414em -999.998em); top: -2.261em; left: 0.002em;"><span class="mrow" id="MathJax-Span-1581"><span class="mi" id="MathJax-Span-1582" style="font-family: MathJax_Math; font-style: italic;">n</span><span class="mo" id="MathJax-Span-1583" style="font-family: MathJax_Main; padding-left: 0.249em;">−</span><span class="mn" id="MathJax-Span-1584" style="font-family: MathJax_Main; padding-left: 0.249em;">1</span></span><span style="display: inline-block; width: 0px; height: 2.266em;"></span></span></span><span style="border-left-width: 0.003em; border-left-style: solid; display: inline-block; overflow: hidden; width: 0px; height: 1.003em; vertical-align: -0.059em;"></span></span></nobr></span><script type="math/tex" id="MathJax-Element-114">n-1</script>次</p>
 
 <p>下面上一段风骚细腻的代码</p>
 
