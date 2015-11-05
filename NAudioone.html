@@ -1,0 +1,531 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="Keywords" content="blog"/>
+    <meta name="Description" content="blog"/>
+    <title>Simple</title>
+    <link rel="shortcut icon" href="/static/favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+</head>
+<body>
+<div class="main">
+    <div class="header">
+    	<ul id="pages">
+            <li><a href="/">home</a></li>
+            <li><a href="/#/tags">tags</a></li>
+            <li><a href="/#/archive">archive</a></li>
+    	</ul>
+    </div>
+	<div class="wrap-header">
+	<h1>
+    <a href="/" id="title"></a>
+	</h1>
+	</div>
+<div id="md" style="display: none;">
+<!-- markdown -->
+Getting Started with NAudio
+
+开始
+
+The easiest way to install NAudio into your project is to install the latest NuGet NAudio package. Prerelease versions of NAudio are also often made available on NuGet.
+
+在你的项目中使用NAudio最简单的方法是使用NuGet NAudio包，通常预览版也会包含在NuGet NAudio包中。
+
+
+Alternatively, you can download the latest release in binary format from the downloads tab here at CodePlex.
+
+或者你还可以通过在CodePlex网站下载最新发布的二进制包。
+
+NAudio comes with several demo applications which are the quickest way to see how to use the various features of NAudio. You can download compiled demo applications from the downloads tab, and explore the source code here.
+通过几个demo可以快速学习如何使用NAudio的一系列特性，你可以在下载标签下载编译过的demo，也可以藉此学习源码。
+
+NAudio Training Courses
+
+NAudio培训课程
+
+If you want to get up to speed as quickly as possible with NAudio programming, I recommend you watch these two Pluralsight courses. You will need to be a subscriber to access the content, but there is 10 hours of training material on NAudio, and it also will give you access to their vast training library on other programming topics.
+
+如果你想尽快掌握用NAudio编程，我建议你观看这两个Pluralsight 课程，你需要订阅以得到获取目录的权限。但这儿有10小时的关于NAudio的训练材料，也能获得他们在其他专题的大量的训练库权限。
+
+Digital Audio Fundamentals
+Audio Programming with NAudio
+To be successful developing applications that process digital audio, there are some key concepts that you need to understand. To help developers quickly get up to speed with what they need to know before trying to use NAudio, I have created the Digital Audio Fundamentals course, which covers sample rates, bit depths, file formats, codecs, decibels, clipping, aliasing, synthesis, visualisations, effects and much more. In particular, the fourth module on signal chains is vital background information if you are to be effective with NAudio. 
+
+Audio Programming with NAudio is a follow-on course which contains seven hours of training material covering all the major features of NAudio. It is highly recommended that you take this course if you intend to create an application with NAudio.
+
+How do I...?
+
+The best way to learn how to use NAudio is to download the source code and look at the two demo applications - NAudioDemo and NAudioWpfDemo. These demonstrate several of the key capabilities of the NAudio framework. They also have the advantage of being kept up to date, whilst some of the tutorials you will find on the internet refer to old versions of NAudio.
+
+Choose an audio output driver
+Play an MP3 File
+Understand how to convert between any audio formats you have codecs for
+Convert an MP3 to WAV
+Encode to MP3 or other formats using MediaFoundationEncoder
+Implement "Fire and Forget" Playback (e.g. game sound effects)
+Play a WAV File
+Use the WavFileWriter class
+Play streaming MP3
+Implement Looped Playback
+Trim a WAV File
+Play a Sine Wave
+Merge MP3 Files
+Convert an AIFF file to WAV
+Work with Multi-Channel Audio
+Create an ID3v2 tag
+Play and Record audio at the same time
+Fix the NoDriver calling acmFormatSuggest issue?
+Resample Audio
+Input driven Audio Resampling
+NAudio FAQ
+
+What is NAudio?
+
+NAudio is an open source audio API for .NET written in C# by Mark Heath, with contributions from many other developers. It is intended to provide a comprehensive set of useful utility classes from which you can construct your own audio application.
+
+Why NAudio?
+
+NAudio was created because the Framework Class Library that shipped with .NET 1.0 had no support for playing audio. The System.Media namespace introduced in .NET 2.0 provided a small amount of support, and the MediaElement in WPF and Silverlight took that a bit further. The vision behind NAudio is to provide a comprehensive set of audio related classes allowing easy development of utilities that play or record audio, or manipulate audio files in some way.
+
+Can I Use NAudio in my Project?
+
+NAudio is licensed under the Microsoft Public License (Ms-PL) which means that you can use it in whatever project you like including commercial projects. Of course we would love it if you share any bug-fixes or enhancements you made to the original NAudio project files.
+
+Is .NET Performance Good Enough for Audio?
+
+While .NET cannot compete with unmanaged languages for very low latency audio work, it still performs better than many people would expect. On a fairly modest PC, you can quite easily mix multiple WAV files together, including pass them through various effects and codecs, play back glitch free with a latency of around 50ms.
+
+How can I get help?
+
+There are three main ways to get help. First, you can ask a question on the NAudio discussion forums here on CodePlex. This is the best option when you've written some code and want to ask why it's not working as you expect. I attempt to answer all questions, but since this is a spare time project, occasionally I get behind. 
+
+You can also ask on StackOverflow and tag your question with naudio, if your question is a "how do I..." sort of question. This gives you a better chance of getting a quick answer. Please try to search first to see if your question has already been answered elsewhere.
+
+Finally, I am occasionally able to offer paid support for situations where you need quick advice, bugfixes or new features. Use the contact feature of the Codeplex website to get in touch with Mark Heath if you wish to pursue this option.
+
+How do I submit a patch?
+
+I welcome contributions to NAudio and have accepted many patches, but if you want your code to be included, please familiarise yourself with the following guidelines:
+
+Your submission must be your own work, and able to be released under the MS-PL license.
+You will need to make sure your code conforms to the layout and naming conventions used elsewhere in NAudio.
+Remember that there are many existing users of NAudio. A patch that changes the public interface is not likely to be accepted.
+Try to write "clean code" - avoid long functions and long classes. Try to add a new feature by creating a new class rather than putting loads of extra code inside an existing one.
+I don't usually accept contributions I can't test, so please write unit tests (using NUnit) if at all possible. If not, give a clear explanation of how your feature can be unit tested and provide test data if appropriate. Tell me what you did to test it yourself, including what operating systems and soundcards you used.
+If you are adding a new feature, please consider writing a short tutorial on how to use it.
+Unless your patch is a small bugfix, I will code review it and give you feedback. You will need to be willing to make the recommended changes before it can be integrated into the main code.
+The easiest way to provide a patch is to create your own fork on Mercurial and issue a pull request. See this video if you are new to Mercurial.
+Please also bear in mind that when you add a feature to NAudio, that feature will generate future support requests and bug reports. Are you willing to stick around on the forums and help out people using it
+http://stackoverflow.com/
+Last edited Feb 3 at 9:28 PM by markheath, version 41
+
+comments
+
+worm2373 Jun 4 at 12:36 AM 
+Hi, is there any reference page? Something similar as this http://www.cplusplus.com/reference/ for Cpp?
+debabrataghosh Apr 9 at 7:53 PM 
+Hi Mark,
+I am a software developer in windows Platform , I am making one application "which is having some .mp3,.wav files " and my expectation is to compare the music file with each other. It means that , here i capture one music file from Mic (With Noise) and i need to compare the two music files. For that if u have any solution . I already made one algo for that but that is not working some critical situation. 
+Can u give any solution .
+Thank u .
+Debabrata Ghosh.
+debu_mca07@hotmail.com
+eejake52 May 27, 2014 at 4:49 AM 
+The link to the training video on how to use Mecurial is broken.
+MASOUD1 Dec 25, 2013 at 12:53 AM 
+please can any one tell me how can i take sample of the wave file if that is mono will take mono or stereo will take it as it without any convert plaseeeeeeeeee
+digimunk Nov 1, 2013 at 5:40 AM 
+Under "Getting Started with NAudio – Downloading and Compiling" the second sentence in item 2 begins with "Class Library's." It should be "Class Libraries."
+The second sentence under item 3 contains "...if your copying..." which should be "...if you're copying..."
+Sign in to add a comment最简单的方法
+
+Alternatively, you can download the latest release in binary format from the downloads tab here at CodePlex.
+
+NAudio comes with several demo applications which are the quickest way to see how to use the various features of NAudio. You can download compiled demo applications from the downloads tab, and explore the source code here.
+
+NAudio Training Courses
+
+If you want to get up to speed as quickly as possible with NAudio programming, I recommend you watch these two Pluralsight courses. You will need to be a subscriber to access the content, but there is 10 hours of training material on NAudio, and it also will give you access to their vast training library on other programming topics.
+
+Digital Audio Fundamentals
+Audio Programming with NAudio
+To be successful developing applications that process digital audio, there are some key concepts that you need to understand. To help developers quickly get up to speed with what they need to know before trying to use NAudio, I have created the Digital Audio Fundamentals course, which covers sample rates, bit depths, file formats, codecs, decibels, clipping, aliasing, synthesis, visualisations, effects and much more. In particular, the fourth module on signal chains is vital background information if you are to be effective with NAudio. 
+
+Audio Programming with NAudio is a follow-on course which contains seven hours of training material covering all the major features of NAudio. It is highly recommended that you take this course if you intend to create an application with NAudio.
+
+How do I...?
+
+The best way to learn how to use NAudio is to download the source code and look at the two demo applications - NAudioDemo and NAudioWpfDemo. These demonstrate several of the key capabilities of the NAudio framework. They also have the advantage of being kept up to date, whilst some of the tutorials you will find on the internet refer to old versions of NAudio.
+
+Choose an audio output driver
+Play an MP3 File
+Understand how to convert between any audio formats you have codecs for
+Convert an MP3 to WAV
+Encode to MP3 or other formats using MediaFoundationEncoder
+Implement "Fire and Forget" Playback (e.g. game sound effects)
+Play a WAV File
+Use the WavFileWriter class
+Play streaming MP3
+Implement Looped Playback
+Trim a WAV File
+Play a Sine Wave
+Merge MP3 Files
+Convert an AIFF file to WAV
+Work with Multi-Channel Audio
+Create an ID3v2 tag
+Play and Record audio at the same time
+Fix the NoDriver calling acmFormatSuggest issue?
+Resample Audio
+Input driven Audio Resampling
+NAudio FAQ
+
+What is NAudio?
+
+NAudio is an open source audio API for .NET written in C# by Mark Heath, with contributions from many other developers. It is intended to provide a comprehensive set of useful utility classes from which you can construct your own audio application.
+
+Why NAudio?
+
+NAudio was created because the Framework Class Library that shipped with .NET 1.0 had no support for playing audio. The System.Media namespace introduced in .NET 2.0 provided a small amount of support, and the MediaElement in WPF and Silverlight took that a bit further. The vision behind NAudio is to provide a comprehensive set of audio related classes allowing easy development of utilities that play or record audio, or manipulate audio files in some way.
+
+Can I Use NAudio in my Project?
+
+NAudio is licensed under the Microsoft Public License (Ms-PL) which means that you can use it in whatever project you like including commercial projects. Of course we would love it if you share any bug-fixes or enhancements you made to the original NAudio project files.
+
+Is .NET Performance Good Enough for Audio?
+
+While .NET cannot compete with unmanaged languages for very low latency audio work, it still performs better than many people would expect. On a fairly modest PC, you can quite easily mix multiple WAV files together, including pass them through various effects and codecs, play back glitch free with a latency of around 50ms.
+
+How can I get help?
+
+There are three main ways to get help. First, you can ask a question on the NAudio discussion forums here on CodePlex. This is the best option when you've written some code and want to ask why it's not working as you expect. I attempt to answer all questions, but since this is a spare time project, occasionally I get behind. 
+
+You can also ask on StackOverflow and tag your question with naudio, if your question is a "how do I..." sort of question. This gives you a better chance of getting a quick answer. Please try to search first to see if your question has already been answered elsewhere.
+
+Finally, I am occasionally able to offer paid support for situations where you need quick advice, bugfixes or new features. Use the contact feature of the Codeplex website to get in touch with Mark Heath if you wish to pursue this option.
+
+How do I submit a patch?
+
+I welcome contributions to NAudio and have accepted many patches, but if you want your code to be included, please familiarise yourself with the following guidelines:
+
+Your submission must be your own work, and able to be released under the MS-PL license.
+You will need to make sure your code conforms to the layout and naming conventions used elsewhere in NAudio.
+Remember that there are many existing users of NAudio. A patch that changes the public interface is not likely to be accepted.
+Try to write "clean code" - avoid long functions and long classes. Try to add a new feature by creating a new class rather than putting loads of extra code inside an existing one.
+I don't usually accept contributions I can't test, so please write unit tests (using NUnit) if at all possible. If not, give a clear explanation of how your feature can be unit tested and provide test data if appropriate. Tell me what you did to test it yourself, including what operating systems and soundcards you used.
+If you are adding a new feature, please consider writing a short tutorial on how to use it.
+Unless your patch is a small bugfix, I will code review it and give you feedback. You will need to be willing to make the recommended changes before it can be integrated into the main code.
+The easiest way to provide a patch is to create your own fork on Mercurial and issue a pull request. See this video if you are new to Mercurial.
+Please also bear in mind that when you add a feature to NAudio, that feature will generate future support requests and bug reports. Are you willing to stick around on the forums and help out people using it
+http://stackoverflow.com/
+Last edited Feb 3 at 9:28 PM by markheath, version 41
+
+comments
+
+worm2373 Jun 4 at 12:36 AM 
+Hi, is there any reference page? Something similar as this http://www.cplusplus.com/reference/ for Cpp?
+debabrataghosh Apr 9 at 7:53 PM 
+Hi Mark,
+I am a software developer in windows Platform , I am making one application "which is having some .mp3,.wav files " and my expectation is to compare the music file with each other. It means that , here i capture one music file from Mic (With Noise) and i need to compare the two music files. For that if u have any solution . I already made one algo for that but that is not working some critical situation. 
+Can u give any solution .
+Thank u .
+Debabrata Ghosh.
+debu_mca07@hotmail.com
+eejake52 May 27, 2014 at 4:49 AM 
+The link to the training video on how to use Mecurial is broken.
+MASOUD1 Dec 25, 2013 at 12:53 AM 
+please can any one tell me how can i take sample of the wave file if that is mono will take mono or stereo will take it as it without any convert plaseeeeeeeeee
+digimunk Nov 1, 2013 at 5:40 AM 
+Under "Getting Started with NAudio – Downloading and Compiling" the second sentence in item 2 begins with "Class Library's." It should be "Class Libraries."
+The second sentence under item 3 contains "...if your copying..." which should be "...if you're copying..."
+Sign in to add a comment
+<!-- markdown end -->
+</div>
+<div class="entry" id="main">
+<!-- content -->
+<p>Getting Started with NAudio</p>
+
+<p>开始</p>
+
+<p>The easiest way to install NAudio into your project is to install the latest NuGet NAudio package. Prerelease versions of NAudio are also often made available on NuGet.</p>
+
+<p>在你的项目中使用NAudio最简单的方法是使用NuGet NAudio包，通常预览版也会包含在NuGet NAudio包中。</p>
+
+<p>Alternatively, you can download the latest release in binary format from the downloads tab here at CodePlex.</p>
+
+<p>或者你还可以通过在CodePlex网站下载最新发布的二进制包。</p>
+
+<p>NAudio comes with several demo applications which are the quickest way to see how to use the various features of NAudio. You can download compiled demo applications from the downloads tab, and explore the source code here.
+通过几个demo可以快速学习如何使用NAudio的一系列特性，你可以在下载标签下载编译过的demo，也可以藉此学习源码。</p>
+
+<p>NAudio Training Courses</p>
+
+<p>NAudio培训课程</p>
+
+<p>If you want to get up to speed as quickly as possible with NAudio programming, I recommend you watch these two Pluralsight courses. You will need to be a subscriber to access the content, but there is 10 hours of training material on NAudio, and it also will give you access to their vast training library on other programming topics.</p>
+
+<p>如果你想尽快掌握用NAudio编程，我建议你观看这两个Pluralsight 课程，你需要订阅以得到获取目录的权限。但这儿有10小时的关于NAudio的训练材料，也能获得他们在其他专题的大量的训练库权限。</p>
+
+<p>Digital Audio Fundamentals
+Audio Programming with NAudio
+To be successful developing applications that process digital audio, there are some key concepts that you need to understand. To help developers quickly get up to speed with what they need to know before trying to use NAudio, I have created the Digital Audio Fundamentals course, which covers sample rates, bit depths, file formats, codecs, decibels, clipping, aliasing, synthesis, visualisations, effects and much more. In particular, the fourth module on signal chains is vital background information if you are to be effective with NAudio. </p>
+
+<p>Audio Programming with NAudio is a follow-on course which contains seven hours of training material covering all the major features of NAudio. It is highly recommended that you take this course if you intend to create an application with NAudio.</p>
+
+<p>How do I...?</p>
+
+<p>The best way to learn how to use NAudio is to download the source code and look at the two demo applications - NAudioDemo and NAudioWpfDemo. These demonstrate several of the key capabilities of the NAudio framework. They also have the advantage of being kept up to date, whilst some of the tutorials you will find on the internet refer to old versions of NAudio.</p>
+
+<p>Choose an audio output driver
+Play an MP3 File
+Understand how to convert between any audio formats you have codecs for
+Convert an MP3 to WAV
+Encode to MP3 or other formats using MediaFoundationEncoder
+Implement "Fire and Forget" Playback (e.g. game sound effects)
+Play a WAV File
+Use the WavFileWriter class
+Play streaming MP3
+Implement Looped Playback
+Trim a WAV File
+Play a Sine Wave
+Merge MP3 Files
+Convert an AIFF file to WAV
+Work with Multi-Channel Audio
+Create an ID3v2 tag
+Play and Record audio at the same time
+Fix the NoDriver calling acmFormatSuggest issue?
+Resample Audio
+Input driven Audio Resampling
+NAudio FAQ</p>
+
+<p>What is NAudio?</p>
+
+<p>NAudio is an open source audio API for .NET written in C# by Mark Heath, with contributions from many other developers. It is intended to provide a comprehensive set of useful utility classes from which you can construct your own audio application.</p>
+
+<p>Why NAudio?</p>
+
+<p>NAudio was created because the Framework Class Library that shipped with .NET 1.0 had no support for playing audio. The System.Media namespace introduced in .NET 2.0 provided a small amount of support, and the MediaElement in WPF and Silverlight took that a bit further. The vision behind NAudio is to provide a comprehensive set of audio related classes allowing easy development of utilities that play or record audio, or manipulate audio files in some way.</p>
+
+<p>Can I Use NAudio in my Project?</p>
+
+<p>NAudio is licensed under the Microsoft Public License (Ms-PL) which means that you can use it in whatever project you like including commercial projects. Of course we would love it if you share any bug-fixes or enhancements you made to the original NAudio project files.</p>
+
+<p>Is .NET Performance Good Enough for Audio?</p>
+
+<p>While .NET cannot compete with unmanaged languages for very low latency audio work, it still performs better than many people would expect. On a fairly modest PC, you can quite easily mix multiple WAV files together, including pass them through various effects and codecs, play back glitch free with a latency of around 50ms.</p>
+
+<p>How can I get help?</p>
+
+<p>There are three main ways to get help. First, you can ask a question on the NAudio discussion forums here on CodePlex. This is the best option when you've written some code and want to ask why it's not working as you expect. I attempt to answer all questions, but since this is a spare time project, occasionally I get behind. </p>
+
+<p>You can also ask on StackOverflow and tag your question with naudio, if your question is a "how do I..." sort of question. This gives you a better chance of getting a quick answer. Please try to search first to see if your question has already been answered elsewhere.</p>
+
+<p>Finally, I am occasionally able to offer paid support for situations where you need quick advice, bugfixes or new features. Use the contact feature of the Codeplex website to get in touch with Mark Heath if you wish to pursue this option.</p>
+
+<p>How do I submit a patch?</p>
+
+<p>I welcome contributions to NAudio and have accepted many patches, but if you want your code to be included, please familiarise yourself with the following guidelines:</p>
+
+<p>Your submission must be your own work, and able to be released under the MS-PL license.
+You will need to make sure your code conforms to the layout and naming conventions used elsewhere in NAudio.
+Remember that there are many existing users of NAudio. A patch that changes the public interface is not likely to be accepted.
+Try to write "clean code" - avoid long functions and long classes. Try to add a new feature by creating a new class rather than putting loads of extra code inside an existing one.
+I don't usually accept contributions I can't test, so please write unit tests (using NUnit) if at all possible. If not, give a clear explanation of how your feature can be unit tested and provide test data if appropriate. Tell me what you did to test it yourself, including what operating systems and soundcards you used.
+If you are adding a new feature, please consider writing a short tutorial on how to use it.
+Unless your patch is a small bugfix, I will code review it and give you feedback. You will need to be willing to make the recommended changes before it can be integrated into the main code.
+The easiest way to provide a patch is to create your own fork on Mercurial and issue a pull request. See this video if you are new to Mercurial.
+Please also bear in mind that when you add a feature to NAudio, that feature will generate future support requests and bug reports. Are you willing to stick around on the forums and help out people using it
+http://stackoverflow.com/
+Last edited Feb 3 at 9:28 PM by markheath, version 41</p>
+
+<p>comments</p>
+
+<p>worm2373 Jun 4 at 12:36 AM 
+Hi, is there any reference page? Something similar as this http://www.cplusplus.com/reference/ for Cpp?
+debabrataghosh Apr 9 at 7:53 PM 
+Hi Mark,
+I am a software developer in windows Platform , I am making one application "which is having some .mp3,.wav files " and my expectation is to compare the music file with each other. It means that , here i capture one music file from Mic (With Noise) and i need to compare the two music files. For that if u have any solution . I already made one algo for that but that is not working some critical situation. 
+Can u give any solution .
+Thank u .
+Debabrata Ghosh.
+debu_mca07@hotmail.com
+eejake52 May 27, 2014 at 4:49 AM 
+The link to the training video on how to use Mecurial is broken.
+MASOUD1 Dec 25, 2013 at 12:53 AM 
+please can any one tell me how can i take sample of the wave file if that is mono will take mono or stereo will take it as it without any convert plaseeeeeeeeee
+digimunk Nov 1, 2013 at 5:40 AM 
+Under "Getting Started with NAudio – Downloading and Compiling" the second sentence in item 2 begins with "Class Library's." It should be "Class Libraries."
+The second sentence under item 3 contains "...if your copying..." which should be "...if you're copying..."
+Sign in to add a comment最简单的方法</p>
+
+<p>Alternatively, you can download the latest release in binary format from the downloads tab here at CodePlex.</p>
+
+<p>NAudio comes with several demo applications which are the quickest way to see how to use the various features of NAudio. You can download compiled demo applications from the downloads tab, and explore the source code here.</p>
+
+<p>NAudio Training Courses</p>
+
+<p>If you want to get up to speed as quickly as possible with NAudio programming, I recommend you watch these two Pluralsight courses. You will need to be a subscriber to access the content, but there is 10 hours of training material on NAudio, and it also will give you access to their vast training library on other programming topics.</p>
+
+<p>Digital Audio Fundamentals
+Audio Programming with NAudio
+To be successful developing applications that process digital audio, there are some key concepts that you need to understand. To help developers quickly get up to speed with what they need to know before trying to use NAudio, I have created the Digital Audio Fundamentals course, which covers sample rates, bit depths, file formats, codecs, decibels, clipping, aliasing, synthesis, visualisations, effects and much more. In particular, the fourth module on signal chains is vital background information if you are to be effective with NAudio. </p>
+
+<p>Audio Programming with NAudio is a follow-on course which contains seven hours of training material covering all the major features of NAudio. It is highly recommended that you take this course if you intend to create an application with NAudio.</p>
+
+<p>How do I...?</p>
+
+<p>The best way to learn how to use NAudio is to download the source code and look at the two demo applications - NAudioDemo and NAudioWpfDemo. These demonstrate several of the key capabilities of the NAudio framework. They also have the advantage of being kept up to date, whilst some of the tutorials you will find on the internet refer to old versions of NAudio.</p>
+
+<p>Choose an audio output driver
+Play an MP3 File
+Understand how to convert between any audio formats you have codecs for
+Convert an MP3 to WAV
+Encode to MP3 or other formats using MediaFoundationEncoder
+Implement "Fire and Forget" Playback (e.g. game sound effects)
+Play a WAV File
+Use the WavFileWriter class
+Play streaming MP3
+Implement Looped Playback
+Trim a WAV File
+Play a Sine Wave
+Merge MP3 Files
+Convert an AIFF file to WAV
+Work with Multi-Channel Audio
+Create an ID3v2 tag
+Play and Record audio at the same time
+Fix the NoDriver calling acmFormatSuggest issue?
+Resample Audio
+Input driven Audio Resampling
+NAudio FAQ</p>
+
+<p>What is NAudio?</p>
+
+<p>NAudio is an open source audio API for .NET written in C# by Mark Heath, with contributions from many other developers. It is intended to provide a comprehensive set of useful utility classes from which you can construct your own audio application.</p>
+
+<p>Why NAudio?</p>
+
+<p>NAudio was created because the Framework Class Library that shipped with .NET 1.0 had no support for playing audio. The System.Media namespace introduced in .NET 2.0 provided a small amount of support, and the MediaElement in WPF and Silverlight took that a bit further. The vision behind NAudio is to provide a comprehensive set of audio related classes allowing easy development of utilities that play or record audio, or manipulate audio files in some way.</p>
+
+<p>Can I Use NAudio in my Project?</p>
+
+<p>NAudio is licensed under the Microsoft Public License (Ms-PL) which means that you can use it in whatever project you like including commercial projects. Of course we would love it if you share any bug-fixes or enhancements you made to the original NAudio project files.</p>
+
+<p>Is .NET Performance Good Enough for Audio?</p>
+
+<p>While .NET cannot compete with unmanaged languages for very low latency audio work, it still performs better than many people would expect. On a fairly modest PC, you can quite easily mix multiple WAV files together, including pass them through various effects and codecs, play back glitch free with a latency of around 50ms.</p>
+
+<p>How can I get help?</p>
+
+<p>There are three main ways to get help. First, you can ask a question on the NAudio discussion forums here on CodePlex. This is the best option when you've written some code and want to ask why it's not working as you expect. I attempt to answer all questions, but since this is a spare time project, occasionally I get behind. </p>
+
+<p>You can also ask on StackOverflow and tag your question with naudio, if your question is a "how do I..." sort of question. This gives you a better chance of getting a quick answer. Please try to search first to see if your question has already been answered elsewhere.</p>
+
+<p>Finally, I am occasionally able to offer paid support for situations where you need quick advice, bugfixes or new features. Use the contact feature of the Codeplex website to get in touch with Mark Heath if you wish to pursue this option.</p>
+
+<p>How do I submit a patch?</p>
+
+<p>I welcome contributions to NAudio and have accepted many patches, but if you want your code to be included, please familiarise yourself with the following guidelines:</p>
+
+<p>Your submission must be your own work, and able to be released under the MS-PL license.
+You will need to make sure your code conforms to the layout and naming conventions used elsewhere in NAudio.
+Remember that there are many existing users of NAudio. A patch that changes the public interface is not likely to be accepted.
+Try to write "clean code" - avoid long functions and long classes. Try to add a new feature by creating a new class rather than putting loads of extra code inside an existing one.
+I don't usually accept contributions I can't test, so please write unit tests (using NUnit) if at all possible. If not, give a clear explanation of how your feature can be unit tested and provide test data if appropriate. Tell me what you did to test it yourself, including what operating systems and soundcards you used.
+If you are adding a new feature, please consider writing a short tutorial on how to use it.
+Unless your patch is a small bugfix, I will code review it and give you feedback. You will need to be willing to make the recommended changes before it can be integrated into the main code.
+The easiest way to provide a patch is to create your own fork on Mercurial and issue a pull request. See this video if you are new to Mercurial.
+Please also bear in mind that when you add a feature to NAudio, that feature will generate future support requests and bug reports. Are you willing to stick around on the forums and help out people using it
+http://stackoverflow.com/
+Last edited Feb 3 at 9:28 PM by markheath, version 41</p>
+
+<p>comments</p>
+
+<p>worm2373 Jun 4 at 12:36 AM 
+Hi, is there any reference page? Something similar as this http://www.cplusplus.com/reference/ for Cpp?
+debabrataghosh Apr 9 at 7:53 PM 
+Hi Mark,
+I am a software developer in windows Platform , I am making one application "which is having some .mp3,.wav files " and my expectation is to compare the music file with each other. It means that , here i capture one music file from Mic (With Noise) and i need to compare the two music files. For that if u have any solution . I already made one algo for that but that is not working some critical situation. 
+Can u give any solution .
+Thank u .
+Debabrata Ghosh.
+debu_mca07@hotmail.com
+eejake52 May 27, 2014 at 4:49 AM 
+The link to the training video on how to use Mecurial is broken.
+MASOUD1 Dec 25, 2013 at 12:53 AM 
+please can any one tell me how can i take sample of the wave file if that is mono will take mono or stereo will take it as it without any convert plaseeeeeeeeee
+digimunk Nov 1, 2013 at 5:40 AM 
+Under "Getting Started with NAudio – Downloading and Compiling" the second sentence in item 2 begins with "Class Library's." It should be "Class Libraries."
+The second sentence under item 3 contains "...if your copying..." which should be "...if you're copying..."
+Sign in to add a comment</p>
+<!-- content end -->
+</div>
+<br>
+<br>
+    <div id="disqus_thread"></div>
+	<div class="footer">
+		<p>© Copyright 2014 by isnowfy, Designed by isnowfy</p>
+	</div>
+</div>
+<script src="main.js"></script>
+<script id="content" type="text/mustache">
+    <h1>{{title}}</h1>
+    <div class="tag">
+    {{date}}
+    {{#tags}}
+    <a href="/#/tag/{{name}}">#{{name}}</a>
+    {{/tags}}
+    </div>
+</script>
+<script id="pagesTemplate" type="text/mustache">
+    {{#pages}}
+    <li>
+        <a href="{{path}}">{{title}}</a>
+    </li>
+    {{/pages}}
+</script>
+<script>
+$(document).ready(function() {
+    $.ajax({
+        url: "main.json",
+        type: "GET",
+        dataType: "json",
+        success: function(data) {
+            $("#title").html(data.name);
+            var pagesTemplate = Hogan.compile($("#pagesTemplate").html());
+            var pagesHtml = pagesTemplate.render({"pages": data.pages});
+            $("#pages").append(pagesHtml);
+            //path
+            var path = "NAudioone.html";
+            //path end
+            var now = 0;
+            for (var i = 0; i < data.posts.length; ++i)
+                if (path == data.posts[i].path)
+                    now = i;
+            var post = data.posts[now];
+            var tmp = post.tags.split(" ");
+            var tags = [];
+            for (var i = 0; i < tmp.length; ++i)
+                if (tmp[i].length > 0)
+                    tags.push({"name": tmp[i]});
+            var contentTemplate = Hogan.compile($("#content").html());
+            var contentHtml = contentTemplate.render({"title": post.title, "tags": tags, "date": post.date});
+            $("#main").prepend(contentHtml);
+            if (data.disqus_shortname.length > 0) {
+                var disqus_shortname = data.disqus_shortname;
+                (function() {
+                    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                })();
+            }
+        }
+    });
+});
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ["\\(", "\\)"]], processEscapes: true}});
+</script>
+</body>
+</html>
